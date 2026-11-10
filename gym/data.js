@@ -147,18 +147,7 @@ const EXERCISES = {
     ],
     errors: ["Separar las mancuernas", "Abrir los codos"]
   },
-  Tricep_Dumbbell_Kickback: {
-    name: "Patada de tríceps",
-    equip: "Banco plano + mancuerna",
-    muscles: "Tríceps",
-    steps: [
-      "Apoya rodilla y mano en el banco plano, espalda paralela al piso.",
-      "Brazo de trabajo con el codo pegado al cuerpo a 90°.",
-      "Estira el brazo hacia atrás hasta quedar recto y aprieta 1 segundo.",
-      "Regresa a 90° sin mover el codo."
-    ],
-    errors: ["Bajar el codo", "Balancear el peso"]
-  },
+
 
   // ---------------- TIRÓN ----------------
   Pullups: {
@@ -199,19 +188,7 @@ const EXERCISES = {
     ],
     errors: ["Girar el torso", "Jalar con el bíceps en vez de la espalda"]
   },
-  Straight_Arm_Dumbbell_Pullover: {
-    img: "Straight-Arm_Dumbbell_Pullover",
-    name: "Pullover con mancuerna",
-    equip: "Banco plano + 1 mancuerna",
-    muscles: "Dorsales, pecho, serratos",
-    steps: [
-      "Recarga la parte alta de la espalda atravesado en el banco plano, cadera abajo.",
-      "Agarra una mancuerna con las dos manos encima del pecho, codos un poco doblados.",
-      "Baja la mancuerna por detrás de la cabeza en arco hasta sentir el estiramiento.",
-      "Regresa arriba del pecho jalando con la espalda."
-    ],
-    errors: ["Doblar mucho los codos", "Subir la cadera"]
-  },
+
   Seated_Bent_Over_Rear_Delt_Raise: {
     img: "Seated_Bent-Over_Rear_Delt_Raise",
     name: "Pájaros sentado (deltoides posterior)",
@@ -284,18 +261,7 @@ const EXERCISES = {
     ],
     errors: ["Girar los hombros en círculo", "Doblar los codos"]
   },
-  Reverse_Flyes: {
-    name: "Aperturas invertidas acostado",
-    equip: "Banco inclinable + mancuernas ligeras",
-    muscles: "Hombro posterior, romboides",
-    steps: [
-      "Acuéstate boca abajo en el banco (plano o poco inclinado).",
-      "Mancuernas colgando, codos ligeramente doblados.",
-      "Abre los brazos hacia los lados hasta la altura del torso.",
-      "Baja lento."
-    ],
-    errors: ["Usar peso pesado", "Jalar con el trapecio"]
-  },
+
   Barbell_Curl: {
     name: "Curl con barra",
     equip: "Barra de la jaula (o barra Z si hay)",
@@ -308,29 +274,32 @@ const EXERCISES = {
     ],
     errors: ["Balancear la cadera", "Mover los codos hacia adelante"]
   },
-  Standing_One_Arm_Curl_Incline_Bench: {
-    img: "Standing_One-Arm_Dumbbell_Curl_Over_Incline_Bench",
-    name: "Curl predicador en banco inclinado",
-    equip: "Banco inclinable + 1 mancuerna",
-    muscles: "Bíceps (parte baja)",
+
+
+
+  Bent_Over_Two_Dumbbell_Row: {
+    img: "Bent_Over_Two-Dumbbell_Row",
+    name: "Remo inclinado con 2 mancuernas",
+    equip: "Mancuernas (de pie)",
+    muscles: "Espalda media, dorsales, bíceps",
     steps: [
-      "Pon el banco inclinado y párate detrás del respaldo.",
-      "Apoya la parte de atrás del brazo sobre el respaldo (como predicador).",
-      "Sube la mancuerna doblando el codo y aprieta.",
-      "Baja lento casi hasta estirar el brazo."
+      "De pie con una mancuerna en cada mano, rodillas un poco dobladas.",
+      "Inclina el torso hacia adelante (~45°) con la espalda recta.",
+      "Jala las dos mancuernas hacia la cintura apretando la espalda.",
+      "Baja controlado sin perder la postura."
     ],
-    errors: ["Estirar de golpe abajo (cuida el codo)", "Levantar el brazo del respaldo"]
+    errors: ["Redondear la espalda", "Pararte derecho para ayudarte con el impulso"]
   },
-  Cross_Body_Hammer_Curl: {
-    name: "Curl martillo cruzado",
-    equip: "Mancuernas",
-    muscles: "Braquial, antebrazo, bíceps",
+  Dumbbell_Alternate_Bicep_Curl: {
+    name: "Curl alterno con mancuernas",
+    equip: "Mancuernas (de pie)",
+    muscles: "Bíceps",
     steps: [
-      "De pie, palmas mirándose.",
-      "Sube la mancuerna cruzando hacia el hombro contrario.",
-      "Baja lento y alterna brazos."
+      "De pie, mancuernas a los lados con las palmas mirándose.",
+      "Sube una mancuerna girando la muñeca para terminar con la palma hacia ti.",
+      "Aprieta arriba, baja lento y cambia de brazo."
     ],
-    errors: ["Balancear el cuerpo"]
+    errors: ["Balancear el cuerpo", "Mover el codo hacia adelante"]
   },
 
   // ---------------- PIERNA ----------------
@@ -360,18 +329,7 @@ const EXERCISES = {
     ],
     errors: ["Despegar el glúteo abajo", "Bloquear las rodillas", "Medias repeticiones con mucho peso"]
   },
-  Split_Squat_with_Dumbbells: {
-    name: "Sentadilla búlgara con mancuernas",
-    equip: "Banco plano + mancuernas",
-    muscles: "Cuádriceps, glúteos",
-    steps: [
-      "De espaldas al banco, pon el empeine de un pie sobre el banco.",
-      "Mancuernas a los lados, pie de adelante a un paso largo del banco.",
-      "Baja la rodilla de atrás hacia el piso, torso recto.",
-      "Sube empujando con el talón del pie de adelante. Termina un lado y luego el otro."
-    ],
-    errors: ["Pie de adelante muy cerca del banco", "Rodilla hacia adentro"]
-  },
+
   Leg_Extensions: {
     name: "Extensión de cuádriceps",
     equip: "Máquina de extensiones",
@@ -420,18 +378,7 @@ const EXERCISES = {
     ],
     errors: ["Redondear la espalda", "Doblar mucho las rodillas (se vuelve sentadilla)", "Alejar la barra del cuerpo"]
   },
-  Barbell_Hip_Thrust: {
-    name: "Hip thrust con barra",
-    equip: "Banco plano + barra (con almohadilla)",
-    muscles: "Glúteos, femorales",
-    steps: [
-      "Espalda alta recargada en la orilla del banco plano, barra sobre la cadera (usa almohadilla o toalla).",
-      "Pies al ancho de cadera, rodillas a 90° arriba.",
-      "Empuja la cadera hacia arriba hasta que el cuerpo quede recto de hombros a rodillas.",
-      "Aprieta glúteos 1 seg arriba, barbilla hacia el pecho, y baja."
-    ],
-    errors: ["Arquear la espalda baja arriba", "Pies muy lejos (trabaja femoral, no glúteo)"]
-  },
+
   Seated_Leg_Curl: {
     name: "Curl femoral sentado",
     equip: "Máquina de curl femoral sentado",
@@ -455,18 +402,7 @@ const EXERCISES = {
     ],
     errors: ["Despegar talones", "Rodillas hacia adentro"]
   },
-  Dumbbell_Lunges: {
-    name: "Zancadas con mancuernas",
-    equip: "Mancuernas",
-    muscles: "Cuádriceps, glúteos",
-    steps: [
-      "De pie, mancuernas a los lados.",
-      "Da un paso largo al frente y baja la rodilla de atrás casi al piso.",
-      "Empuja con el pie de adelante para regresar.",
-      "Alterna piernas (o camina si hay espacio)."
-    ],
-    errors: ["Paso muy corto", "Torso inclinado al frente"]
-  },
+
   Seated_Calf_Raise: {
     name: "Pantorrilla sentado",
     equip: "Máquina de pantorrilla sentado",
@@ -517,7 +453,7 @@ const ROUTINES = [
           { id: "Pullups", sets: 4, reps: "6–10", rest: 120 },
           { id: "Bent_Over_Barbell_Row", sets: 4, reps: "8–10", rest: 120 },
           { id: "One_Arm_Dumbbell_Row", sets: 3, reps: "10 c/lado", rest: 75 },
-          { id: "Straight_Arm_Dumbbell_Pullover", sets: 3, reps: "12", rest: 75 },
+          { id: "Bent_Over_Two_Dumbbell_Row", sets: 3, reps: "10–12", rest: 90 },
           { id: "Seated_Bent_Over_Rear_Delt_Raise", sets: 3, reps: "15", rest: 60 },
           { id: "Incline_Dumbbell_Curl", sets: 3, reps: "10–12", rest: 75 },
           { id: "Hammer_Curls", sets: 3, reps: "12", rest: 60 }
@@ -528,7 +464,7 @@ const ROUTINES = [
         list: [
           { id: "Barbell_Squat", sets: 4, reps: "6–8", rest: 150 },
           { id: "Leg_Press", sets: 4, reps: "10–12", rest: 120 },
-          { id: "Split_Squat_with_Dumbbells", sets: 3, reps: "10 c/pierna", rest: 90 },
+          { id: "Hack_Squat", sets: 3, reps: "10", rest: 120 },
           { id: "Leg_Extensions", sets: 3, reps: "12–15", rest: 60 },
           { id: "Lying_Leg_Curls", sets: 3, reps: "10–12", rest: 75 },
           { id: "Standing_Calf_Raises", sets: 4, reps: "12–15", rest: 60 }
@@ -542,7 +478,7 @@ const ROUTINES = [
           { id: "Dumbbell_Flyes", sets: 3, reps: "12", rest: 75 },
           { id: "Seated_Side_Lateral_Raise", sets: 4, reps: "12–15", rest: 60 },
           { id: "Close_Grip_Dumbbell_Press", sets: 3, reps: "10", rest: 90 },
-          { id: "Tricep_Dumbbell_Kickback", sets: 3, reps: "12 c/brazo", rest: 60 }
+          { id: "Standing_Dumbbell_Triceps_Extension", sets: 3, reps: "12", rest: 60 }
         ]
       },
       {
@@ -551,20 +487,20 @@ const ROUTINES = [
           { id: "Chin_Up", sets: 4, reps: "6–10", rest: 120 },
           { id: "Dumbbell_Incline_Row", sets: 4, reps: "10", rest: 90 },
           { id: "One_Arm_Dumbbell_Row", sets: 3, reps: "8 c/lado (pesado)", rest: 90 },
-          { id: "Reverse_Flyes", sets: 3, reps: "15", rest: 60 },
+          { id: "Seated_Bent_Over_Rear_Delt_Raise", sets: 3, reps: "15", rest: 60 },
           { id: "Dumbbell_Shrug", sets: 3, reps: "12–15", rest: 60 },
           { id: "Barbell_Curl", sets: 3, reps: "8–10", rest: 75 },
-          { id: "Standing_One_Arm_Curl_Incline_Bench", sets: 3, reps: "10 c/brazo", rest: 60 }
+          { id: "Dumbbell_Alternate_Bicep_Curl", sets: 3, reps: "10 c/brazo", rest: 60 }
         ]
       },
       {
         day: "Sábado", title: "Pierna B", focus: "Cadena posterior (femoral y glúteo) + cuádriceps", time: "75–85 min",
         list: [
           { id: "Romanian_Deadlift", sets: 4, reps: "8–10", rest: 150 },
-          { id: "Barbell_Hip_Thrust", sets: 4, reps: "10", rest: 120 },
+          { id: "Leg_Press", sets: 4, reps: "10–12 (pies altos)", rest: 120 },
           { id: "Seated_Leg_Curl", sets: 4, reps: "10–12", rest: 75 },
           { id: "Hack_Squat", sets: 3, reps: "10", rest: 120 },
-          { id: "Dumbbell_Lunges", sets: 3, reps: "10 c/pierna", rest: 75 },
+          { id: "Leg_Extensions", sets: 3, reps: "12–15", rest: 60 },
           { id: "Seated_Calf_Raise", sets: 4, reps: "15", rest: 60 },
           { id: "Hanging_Leg_Raise", sets: 3, reps: "12", rest: 60 }
         ]
