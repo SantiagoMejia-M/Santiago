@@ -121,6 +121,36 @@ body.workout{padding-bottom:0}
 .dots{display:flex;gap:4px;margin-top:7px}
 .dots i{width:14px;height:5px;border-radius:9px;background:var(--card2)}
 .dots i.on{background:var(--ok)}
+.dots i.sk,.setpills i.sk{background:#5b6170}
+.star{font-size:11px;font-weight:800;color:#ffd23f;white-space:nowrap;margin-top:7px}
+/* ---------- editor ---------- */
+.ed{display:flex;align-items:center;gap:10px;padding:10px;margin-bottom:10px}
+.ed img{width:64px;height:48px;border-radius:12px;object-fit:cover;background:#fff;flex:none}
+.ed .nm{font-weight:800;font-size:15px;line-height:1.2}
+.ed .ctl{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap}
+.mini{min-width:34px;height:34px;border-radius:10px;border:0;background:var(--card2);font-weight:900;font-size:15px;padding:0 8px}
+.mini.del{background:rgba(255,93,93,.15);color:var(--bad)}
+.sv{font-weight:900;min-width:58px;text-align:center;font-size:14px}
+.side{display:flex;flex-direction:column;gap:6px;flex:none}
+.filters{display:flex;gap:6px;overflow-x:auto;margin:0 -16px 12px;padding:0 16px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filters button{flex:none;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:8px 14px;font-weight:800;font-size:13px}
+.filters button.on{background:var(--c);color:#0b0c10;border-color:var(--c)}
+.search{width:100%;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;color:var(--text);font-size:16px;margin-bottom:10px;outline:none}
+.lib{display:flex;align-items:center;gap:12px;padding:10px;margin-bottom:8px}
+.lib img{width:72px;height:54px;border-radius:12px;object-fit:cover;background:#fff;flex:none}
+.lib .add{width:40px;height:40px;border-radius:12px;background:var(--c);color:#0b0c10;display:grid;place-items:center;font-size:22px;font-weight:900;flex:none;border:0}
+.lib.in .add{background:var(--card2);color:var(--muted)}
+.mine{font-size:10px;font-weight:900;background:#a78bfa;color:#0b0c10;padding:2px 7px;border-radius:99px;margin-left:6px;vertical-align:2px}
+.form label{display:block;font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:16px 2px 8px}
+.form input,.form textarea,.form select{width:100%;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;color:var(--text);font-size:16px;font-family:inherit;outline:none}
+.form textarea{min-height:110px;resize:vertical;line-height:1.45}
+.form .hint{font-size:12px;color:var(--muted);margin:6px 2px 0}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pic{position:relative;aspect-ratio:4/3;border-radius:16px;border:2px dashed var(--line);background:var(--card);display:grid;place-items:center;overflow:hidden;text-align:center;font-size:13px;font-weight:800;color:var(--muted)}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pic input{position:absolute;inset:0;opacity:0}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .warm{display:flex;gap:12px;align-items:flex-start;background:color-mix(in srgb,#ffb020 10%,var(--card));border:1px solid color-mix(in srgb,#ffb020 30%,var(--line));color:#ffd58a;border-radius:18px;padding:14px;margin-bottom:14px;font-size:14px;line-height:1.45}
 .warm b{color:#ffe2a8}
 
@@ -251,7 +281,15 @@ const R = ROUTINES[0];
 const ICON = { empuje: "🔥", tiron: "⚡", pierna: "🦵", descanso: "😴" };
 const JS_DAYS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 const todayIdx = () => R.days.findIndex(d => d.day === JS_DAYS[new Date().getDay()]);
-const imgOf = id => "img/" + (EXERCISES[id].img || id);
+const CUSTOM_IMG = {};
+const PLACEHOLDER = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"><rect width="300" height="200" fill="#1e212b"/><text x="150" y="112" font-size="64" text-anchor="middle">🏋️</text></svg>');
+function img(id, f){
+  const e = EXERCISES[id];
+  if(e && e.custom) return (CUSTOM_IMG[id] && (CUSTOM_IMG[id][f] || CUSTOM_IMG[id][0])) || PLACEHOLDER;
+  return "img/" + ((e && e.img) || id) + "/" + f + ".jpg";
+}
+// tiempo estimado: ~45 s por serie + descanso + 8 min de calentamiento
+const dayTime = d => Math.round((d.list.reduce((a, x) => a + x.sets * (45 + x.rest), 0)) / 60 + 8);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmtRest = s => s >= 60 ? (s % 60 ? `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}` : `${s/60} min`) : `${s} s`;
 const clock = s => `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
@@ -265,7 +303,7 @@ function weekId(date = new Date()){ // lunes de esta semana
   const d = new Date(date); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd);
   return d.toISOString().slice(0,10);
 }
-const doneKey = (di, ei) => `done:${weekId()}:${R.id}:${di}:${ei}`;
+const doneKey = (di, ei) => `done2:${weekId()}:${R.id}:${di}:${R.days[di].list[ei].id}`;
 const getDone = (di, ei) => store.get(doneKey(di, ei), []);
 const setDone = (di, ei, v) => store.set(doneKey(di, ei), v);
 const lastW = id => store.get(`w:${id}`, []);
@@ -281,6 +319,191 @@ function dayProg(di){
 }
 const totalSets = d => d.list.reduce((a, x) => a + x.sets, 0);
 
+/* ---------- personalización: ejercicios propios, fotos y listas editadas ---------- */
+const CATS = { pecho: "Pecho", espalda: "Espalda", hombro: "Hombro", brazos: "Brazos", pierna: "Pierna" };
+const DEFAULT_LISTS = JSON.parse(JSON.stringify(R.days.map(d => d.list)));
+Object.assign(EXERCISES, store.get("customEx", {}));
+(function applyLists(){
+  const ov = store.get("lists:" + R.id, null);
+  if(ov) R.days.forEach((d, i) => { if(Array.isArray(ov[i])) d.list = ov[i].filter(x => EXERCISES[x.id]); });
+})();
+const saveLists = () => store.set("lists:" + R.id, R.days.map(d => d.list));
+const idb = {
+  db: null,
+  open(){ return this.db ? Promise.resolve(this.db) : new Promise((ok, ko) => {
+    const r = indexedDB.open("migym", 1);
+    r.onupgradeneeded = () => r.result.createObjectStore("imgs");
+    r.onsuccess = () => ok(this.db = r.result); r.onerror = () => ko(r.error);
+  }); },
+  tx(mode, fn){ return this.open().then(db => new Promise((ok, ko) => {
+    const t = db.transaction("imgs", mode); const req = fn(t.objectStore("imgs"));
+    t.oncomplete = () => ok(req && req.result); t.onerror = () => ko(t.error);
+  })); },
+  put(k, v){ return this.tx("readwrite", s => s.put(v, k)); },
+  del(k){ return this.tx("readwrite", s => s.delete(k)); },
+  loadAll(){ return this.open().then(db => new Promise(ok => {
+    const s = db.transaction("imgs").objectStore("imgs"); const c = s.openCursor();
+    c.onsuccess = () => { const cur = c.result; if(cur){ CUSTOM_IMG[cur.key] = cur.value; cur.continue(); } else ok(); };
+    c.onerror = () => ok();
+  })).catch(() => {}); }
+};
+function shrink(file){ // foto del cel -> jpg de máx 640 px
+  return new Promise((ok, ko) => {
+    const fr = new FileReader();
+    fr.onload = () => { const im = new Image(); im.onload = () => {
+      const k = Math.min(1, 640 / Math.max(im.width, im.height));
+      const c = document.createElement("canvas"); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+      c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); ok(c.toDataURL("image/jpeg", .78));
+    }; im.onerror = ko; im.src = fr.result; };
+    fr.onerror = ko; fr.readAsDataURL(file);
+  });
+}
+
+/* ---------- EDITAR DÍA ---------- */
+function viewEditar(di){
+  setTab("rutinas");
+  const d = R.days[di]; if(!d) return viewHoy();
+  view.innerHTML = topBar(`Editar · ${d.day}`, `#/dia/${di}`) + `<main class="t-${d.type}">
+    <div class="muted" style="font-size:14px;margin:0 2px 14px;line-height:1.5">Cambia series, reps y descanso, ordénalos con ▲▼ o quítalos con 🗑. Se guarda solo.</div>
+    ${d.list.map((x, ei) => `<div class="card ed">
+      <img src="${img(x.id,1)}" alt="">
+      <div class="grow">
+        <div class="nm">${esc(EXERCISES[x.id].name)}</div>
+        <div class="ctl">
+          <button class="mini" data-a="s-" data-i="${ei}">−</button><span class="sv">${x.sets} series</span><button class="mini" data-a="s+" data-i="${ei}">+</button>
+        </div>
+        <div class="ctl">
+          <input class="mini" style="width:96px;text-align:center;color:var(--text);border:1px solid var(--line);background:var(--bg)" value="${esc(x.reps)}" data-a="reps" data-i="${ei}" aria-label="Repeticiones">
+          <button class="mini" data-a="r-" data-i="${ei}">−</button><span class="sv">⏱ ${fmtRest(x.rest)}</span><button class="mini" data-a="r+" data-i="${ei}">+</button>
+        </div>
+      </div>
+      <div class="side">
+        <button class="mini" data-a="up" data-i="${ei}" ${ei === 0 ? "disabled style='opacity:.3'" : ""}>▲</button>
+        <button class="mini" data-a="dn" data-i="${ei}" ${ei === d.list.length - 1 ? "disabled style='opacity:.3'" : ""}>▼</button>
+        <button class="mini del" data-a="del" data-i="${ei}">🗑</button>
+      </div></div>`).join("")}
+    ${d.list.length ? "" : `<div class="card empty"><span class="e">📭</span>Sin ejercicios. Agrega uno abajo.</div>`}
+    <a class="btn main press" href="#/agregar/${di}">➕ Agregar ejercicio</a>
+    <a class="btn ghost press" href="#/dia/${di}">✓ Listo</a>
+    <button class="btn ghost" id="restore" style="color:var(--muted);font-size:14px">↺ Volver a la rutina original de este día</button>
+  </main>`;
+  view.querySelectorAll("[data-a]").forEach(el => {
+    const a = el.dataset.a, i = +el.dataset.i, x = d.list[i];
+    if(a === "reps"){ el.onchange = () => { x.reps = el.value.trim() || x.reps; saveLists(); }; return; }
+    el.onclick = () => {
+      if(a === "s-") x.sets = Math.max(1, x.sets - 1);
+      if(a === "s+") x.sets = Math.min(6, x.sets + 1);
+      if(a === "r-") x.rest = Math.max(15, x.rest - 15);
+      if(a === "r+") x.rest = Math.min(300, x.rest + 15);
+      if(a === "up") d.list.splice(i - 1, 0, d.list.splice(i, 1)[0]);
+      if(a === "dn") d.list.splice(i + 1, 0, d.list.splice(i, 1)[0]);
+      if(a === "del"){ if(!confirm(`¿Quitar "${EXERCISES[x.id].name}" de este día?`)) return; d.list.splice(i, 1); }
+      saveLists(); viewEditar(di);
+    };
+  });
+  $("#restore").onclick = () => {
+    if(!confirm("¿Regresar este día a como venía originalmente?")) return;
+    d.list = JSON.parse(JSON.stringify(DEFAULT_LISTS[di])); saveLists(); viewEditar(di);
+  };
+}
+
+/* ---------- AGREGAR EJERCICIO ---------- */
+let libFilter = "todos", libQuery = "";
+function viewAgregar(di){
+  setTab("rutinas");
+  const d = R.days[di]; if(!d) return viewHoy();
+  const f = [["todos","Todos"], ...Object.entries(CATS), ["mios","⭐ Míos"]];
+  view.innerHTML = topBar("Agregar ejercicio", `#/editar/${di}`) + `<main class="t-${d.type}">
+    <a class="btn main press" href="#/nuevo/${di}">✨ Crear ejercicio nuevo (con fotos)</a>
+    <input class="search" id="q" placeholder="🔍 Buscar…" value="${esc(libQuery)}">
+    <div class="filters">${f.map(([k, v]) => `<button data-f="${k}" class="${libFilter === k ? "on" : ""}">${v}</button>`).join("")}</div>
+    <div id="lib"></div></main>`;
+  const draw = () => {
+    const q = libQuery.toLowerCase();
+    const ids = Object.keys(EXERCISES).filter(id => {
+      const e = EXERCISES[id];
+      if(libFilter === "mios" && !e.custom) return false;
+      if(libFilter !== "todos" && libFilter !== "mios" && e.cat !== libFilter) return false;
+      return !q || (e.name + " " + (e.muscles || "") + " " + (e.equip || "")).toLowerCase().includes(q);
+    }).sort((a, b) => (EXERCISES[b].custom ? 1 : 0) - (EXERCISES[a].custom ? 1 : 0) || EXERCISES[a].name.localeCompare(EXERCISES[b].name));
+    $("#lib").innerHTML = ids.length ? ids.map(id => {
+      const e = EXERCISES[id], inDay = d.list.some(x => x.id === id);
+      return `<div class="card lib ${inDay ? "in" : ""}">
+        <img src="${img(id,1)}" alt="">
+        <div class="grow"><div style="font-weight:800;line-height:1.2">${esc(e.name)}${e.custom ? '<span class="mine">MÍO</span>' : ""}</div>
+          <div class="muted ell" style="font-size:13px;margin-top:3px">${esc(e.equip || CATS[e.cat] || "")}</div>
+          ${e.custom ? `<a href="#/nuevo/${di}/${id}" style="font-size:13px;font-weight:800;color:var(--c)">✏️ Editar</a>` : ""}</div>
+        <button class="add" data-id="${id}" aria-label="${inDay ? "Quitar" : "Agregar"}">${inDay ? "✓" : "+"}</button></div>`;
+    }).join("") : `<div class="card empty"><span class="e">🤷</span>No hay ejercicios aquí.</div>`;
+    $("#lib").querySelectorAll(".add").forEach(b => b.onclick = () => {
+      const id = b.dataset.id, k = d.list.findIndex(x => x.id === id);
+      if(k >= 0) d.list.splice(k, 1); else d.list.push({ id, sets: 2, reps: "10–12", rest: 75 });
+      saveLists(); draw();
+    });
+  };
+  $("#q").oninput = e => { libQuery = e.target.value; draw(); };
+  view.querySelectorAll("[data-f]").forEach(b => b.onclick = () => { libFilter = b.dataset.f; view.querySelectorAll("[data-f]").forEach(x => x.classList.toggle("on", x === b)); draw(); });
+  draw();
+}
+
+/* ---------- CREAR / EDITAR EJERCICIO PROPIO ---------- */
+function viewNuevo(di, editId){
+  setTab("rutinas");
+  const d = R.days[di]; if(!d) return viewHoy();
+  const e = editId ? EXERCISES[editId] : null;
+  if(editId && !(e && e.custom)) return viewAgregar(di);
+  const pics = editId && CUSTOM_IMG[editId] ? [...CUSTOM_IMG[editId]] : [null, null];
+  const catOpts = Object.entries(CATS).map(([k, v]) => `<option value="${k}" ${e && e.cat === k ? "selected" : ""}>${v}</option>`).join("");
+  view.innerHTML = topBar(e ? "Editar ejercicio" : "Ejercicio nuevo", `#/agregar/${di}`) + `<main class="t-${d.type} form">
+    <label>Nombre *</label><input id="fn" placeholder="Ej. Press en máquina" value="${esc(e ? e.name : "")}">
+    <label>Fotos o GIF (inicio y final)</label>
+    <div class="pics">
+      ${[0, 1].map(i => `<div class="pic" id="pic${i}">${pics[i] ? `<img src="${pics[i]}" alt="">` : ""}<span>📷<br>${i ? "2 · Final" : "1 · Inicio"}</span><input type="file" accept="image/*" data-i="${i}"></div>`).join("")}
+    </div>
+    <div class="hint">Toca para tomar foto o elegir de tu galería (capturas de Google también sirven). Con 2 fotos se anima solo.</div>
+    <label>Grupo muscular</label><select id="fc">${catOpts}</select>
+    <label>Equipo</label><input id="fe" placeholder="Ej. Polea alta + cuerda" value="${esc(e ? e.equip : "")}">
+    <label>Músculos que trabaja</label><input id="fm" placeholder="Ej. Pecho, tríceps" value="${esc(e ? e.muscles : "")}">
+    <label>Cómo se hace</label><textarea id="fs" placeholder="Un paso por renglón">${esc(e ? e.steps.join("\n") : "")}</textarea>
+    <label>Errores a evitar</label><textarea id="fx" style="min-height:80px" placeholder="Uno por renglón (opcional)">${esc(e ? e.errors.join("\n") : "")}</textarea>
+    ${e ? "" : `<label>Para ${esc(d.day)}</label>
+    <div class="three"><div><input id="fse" inputmode="numeric" value="2"><div class="hint">series</div></div><div><input id="fr" value="10–12"><div class="hint">reps</div></div><div><input id="fd" inputmode="numeric" value="75"><div class="hint">descanso (seg)</div></div></div>`}
+    <div style="height:18px"></div>
+    <button class="btn main press" id="save">💾 Guardar ${e ? "cambios" : "y agregar a " + esc(d.day)}</button>
+    ${e ? `<button class="btn ghost" id="delx" style="color:var(--bad)">🗑 Borrar este ejercicio</button>` : ""}
+  </main>`;
+  view.querySelectorAll(".pic input").forEach(inp => inp.onchange = async () => {
+    const f = inp.files[0]; if(!f) return; const i = +inp.dataset.i;
+    try{
+      pics[i] = await shrink(f);
+      const box = $("#pic" + i); let im = box.querySelector("img");
+      if(!im){ im = document.createElement("img"); box.prepend(im); } im.src = pics[i];
+    }catch(err){ alert("No se pudo leer esa imagen. Prueba con otra."); }
+  });
+  const lines = id => $(id).value.split("\n").map(t => t.trim()).filter(Boolean);
+  $("#save").onclick = async () => {
+    const name = $("#fn").value.trim();
+    if(!name){ alert("Ponle nombre al ejercicio 🙂"); $("#fn").focus(); return; }
+    const id = editId || "my_" + Date.now().toString(36);
+    const ex = { custom: true, cat: $("#fc").value, name, equip: $("#fe").value.trim(), muscles: $("#fm").value.trim(), steps: lines("#fs"), errors: lines("#fx") };
+    const all = store.get("customEx", {}); all[id] = ex; store.set("customEx", all); EXERCISES[id] = ex;
+    const p = pics.filter(Boolean);
+    if(p.length){ CUSTOM_IMG[id] = [pics[0] || pics[1], pics[1] || pics[0]]; await idb.put(id, CUSTOM_IMG[id]).catch(() => alert("No se pudieron guardar las fotos (poco espacio).")); }
+    if(!editId){
+      d.list.push({ id, sets: Math.min(6, Math.max(1, parseInt($("#fse").value) || 2)), reps: $("#fr").value.trim() || "10–12", rest: Math.min(300, Math.max(15, parseInt($("#fd").value) || 75)) });
+      saveLists(); location.hash = `#/editar/${di}`;
+    } else location.hash = `#/agregar/${di}`;
+  };
+  const dx = $("#delx");
+  if(dx) dx.onclick = async () => {
+    if(!confirm(`¿Borrar "${e.name}" de todos los días?`)) return;
+    const all = store.get("customEx", {}); delete all[editId]; store.set("customEx", all);
+    R.days.forEach(day => { day.list = day.list.filter(x => x.id !== editId); }); saveLists();
+    delete EXERCISES[editId]; delete CUSTOM_IMG[editId]; await idb.del(editId).catch(() => {});
+    location.hash = `#/agregar/${di}`;
+  };
+}
+
 /* ---------- ui helpers ---------- */
 function topBar(title, back){
   return `<div class="top">${back ? `<button class="back press" onclick="location.hash='${back}'" aria-label="Atrás">‹</button>` : ""}<h1>${esc(title)}</h1></div>`;
@@ -292,7 +515,7 @@ function ring(p, label){
 function setTab(t){ document.querySelectorAll("#tabs a").forEach(a => a.classList.toggle("on", a.dataset.t === t)); }
 function animBox(id){
   return `<div class="anim" onclick="this.classList.toggle('paused');this.querySelector('.pp').textContent=this.classList.contains('paused')?'▶':'❚❚'">
-    <img src="${imgOf(id)}/0.jpg" alt="Inicio del movimiento"><img class="f1" src="${imgOf(id)}/1.jpg" alt="Final del movimiento">
+    <img src="${img(id,0)}" alt="Inicio del movimiento"><img class="f1" src="${img(id,1)}" alt="Final del movimiento">
     <div class="lb"><span class="a">1 · INICIO</span><span class="b">2 · FINAL</span></div><div class="pp">❚❚</div></div>`;
 }
 
@@ -317,8 +540,8 @@ function viewHoy(){
     const p = dayProg(ti);
     hero = `<div class="hero t-${d.type}"><div class="emo">${ICON[d.type]}</div>
       <div class="kicker">Hoy toca</div><h2>${esc(d.title)}</h2><div class="focus">${esc(d.focus)} · ${esc(d.emphasis)}</div>
-      <div class="strip">${d.list.map(x => `<img src="${imgOf(x.id)}/1.jpg" alt="" loading="lazy">`).join("")}</div>
-      <div class="bigstats"><div><b>${d.list.length}</b><span>Ejercicios</span></div><div><b>${totalSets(d)}</b><span>Series</span></div><div><b>${d.time}'</b><span>Minutos</span></div></div>
+      <div class="strip">${d.list.map(x => `<img src="${img(x.id,1)}" alt="" loading="lazy">`).join("")}</div>
+      <div class="bigstats"><div><b>${d.list.length}</b><span>Ejercicios</span></div><div><b>${totalSets(d)}</b><span>Series</span></div><div><b>${dayTime(d)}'</b><span>Minutos</span></div></div>
       <a class="btn main press" href="#/entrenar/${ti}">${p.ok ? (p.pct >= 1 ? "✓ ¡Completado! Repasar" : `▶ CONTINUAR (${p.ok}/${p.tot})`) : "▶ EMPEZAR ENTRENAMIENTO"}</a>
       <a class="btn ghost press" href="#/dia/${ti}">Ver ejercicios</a></div>`;
   }
@@ -380,17 +603,19 @@ function viewDia(di){
       <div class="k">${ICON[d.type]} ${esc(d.emphasis)}</div>
       <h2>${esc(d.title)}</h2>
       <div class="muted" style="font-weight:600;margin-bottom:12px">${esc(d.focus)}</div>
-      <span class="chip">📋 ${d.list.length} ejercicios</span><span class="chip">🔁 ${p.tot} series</span><span class="chip">⏱ ~${d.time} min</span>
+      <span class="chip">📋 ${d.list.length} ejercicios</span><span class="chip">🔁 ${p.tot} series</span><span class="chip">⏱ ~${dayTime(d)} min</span>
     </div>
-    <a class="btn main press" href="#/entrenar/${di}">${p.ok ? (p.pct >= 1 ? "✓ Completado · Repasar" : `▶ CONTINUAR (${p.ok}/${p.tot})`) : "▶ EMPEZAR ENTRENAMIENTO"}</a>
+    ${d.list.length ? `<a class="btn main press" href="#/entrenar/${di}">${p.ok ? (p.pct >= 1 ? "✓ Completado · Repasar" : `▶ CONTINUAR (${p.ok}/${p.tot})`) : "▶ EMPEZAR ENTRENAMIENTO"}</a>` : ""}
+    <a class="btn ghost press" href="#/editar/${di}">✏️ Editar ejercicios de este día</a>
+    ${d.list.length ? "" : `<div class="card empty"><span class="e">📭</span>Este día no tiene ejercicios.<br>Toca "Editar" para agregar.</div>`}
     <div class="warm">🔥<div><b>Calienta primero:</b> 5–10 min de cardio suave y 1–2 series ligeras del primer ejercicio.</div></div>
     ${d.list.map((x, ei) => {
       const e = EXERCISES[x.id], dn = getDone(di, ei), ok = dn.filter(Boolean).length;
       return `<a class="card ex press ${ok >= x.sets ? "done" : ""}" href="#/ej/${di}/${ei}">
-        <div class="ph"><img src="${imgOf(x.id)}/1.jpg" alt="" loading="lazy"><div class="n">${ok >= x.sets ? "✓" : ei + 1}</div></div>
+        <div class="ph"><img src="${img(x.id,1)}" alt="" loading="lazy"><div class="n">${ok >= x.sets ? "✓" : ei + 1}</div></div>
         <div class="grow"><div class="nm">${esc(e.name)}</div>
           <div class="sr"><b>${x.sets} × ${esc(x.reps)}</b> · descanso ${fmtRest(x.rest)}</div>
-          <div class="dots">${Array.from({length:x.sets}, (_, i) => `<i class="${dn[i] ? "on" : ""}"></i>`).join("")}</div></div>
+          <div class="row" style="gap:8px;margin-top:2px"><div class="dots">${Array.from({length:x.sets}, (_, i) => `<i class="${dn[i] === "skip" ? "sk" : dn[i] ? "on" : ""}"></i>`).join("")}</div>${x.sets >= 3 ? `<span class="star">⭐ Principal</span>` : ""}</div></div>
         <div class="muted" style="font-size:22px">›</div></a>`;
     }).join("")}
     ${p.ok ? `<button class="btn ghost" id="reset">↺ Reiniciar progreso de este día</button>` : ""}
@@ -402,8 +627,8 @@ function viewDia(di){
 /* ---------- EJERCICIO (detalle) ---------- */
 function howTo(e){
   return `${e.note ? `<div class="note">💡 ${esc(e.note)}</div>` : ""}
-    <div class="card"><div class="sec-t">Cómo se hace</div><ol class="steps">${e.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol></div>
-    <div class="card"><div class="sec-t">Evita estos errores</div><ul class="errs">${e.errors.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>
+    ${e.steps.length ? `<div class="card"><div class="sec-t">Cómo se hace</div><ol class="steps">${e.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol></div>` : ""}
+    ${e.errors.length ? `<div class="card"><div class="sec-t">Evita estos errores</div><ul class="errs">${e.errors.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>` : ""}
     <a class="btn ghost press" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent("como hacer " + e.name + " tecnica")}">▶️ Ver video en YouTube</a>`;
 }
 function viewEj(di, ei){
@@ -415,7 +640,7 @@ function viewEj(di, ei){
     <div class="xname">${esc(e.name)}</div>
     <div class="trio"><div><b>${x.sets}</b><span>Series</span></div><div><b>${esc(x.reps.replace(/ \(.*\)/, ""))}</b><span>Reps</span></div><div><b>${fmtRest(x.rest)}</b><span>Descanso</span></div></div>
     ${/\(/.test(x.reps) ? `<div class="note">👉 ${esc(x.reps.match(/\((.*)\)/)[1])}</div>` : ""}
-    <div class="info"><div><i>🏋️</i>${esc(e.equip)}</div><div><i>🎯</i>${esc(e.muscles)}</div>
+    <div class="info">${e.equip ? `<div><i>🏋️</i>${esc(e.equip)}</div>` : ""}${e.muscles ? `<div><i>🎯</i>${esc(e.muscles)}</div>` : ""}
       ${w.length ? `<div><i>📒</i>Última vez: ${w.map(v => esc(v) + " kg").join(" · ")}${b ? ` · Récord ${b} kg` : ""}</div>` : ""}</div>
     ${howTo(e)}
     <div class="nav2">
@@ -445,6 +670,7 @@ function nextPending(di){
 }
 function viewEntrenar(di, eiArg){
   const d = R.days[di]; if(!d || d.type === "descanso") return viewHoy();
+  if(!d.list.length){ location.hash = `#/dia/${di}`; return; }
   document.body.classList.add("workout"); keepAwake(true);
   if(!store.get(`start:${weekId()}:${di}`, 0)) store.set(`start:${weekId()}:${di}`, Date.now());
   const np = nextPending(di);
@@ -469,16 +695,17 @@ function viewEntrenar(di, eiArg){
       <div class="reps"><b>${esc(x.reps.replace(/ \(.*\)/, ""))}</b><span>repeticiones</span></div>
     </div>
     ${/\(/.test(x.reps) ? `<div class="note">👉 ${esc(x.reps.match(/\((.*)\)/)[1])}</div>` : ""}
-    <div class="setpills">${Array.from({length:x.sets}, (_, i) => `<i class="${dn[i] ? "on" : i === s ? "cur" : ""}"></i>`).join("")}</div>
+    <div class="setpills">${Array.from({length:x.sets}, (_, i) => `<i class="${dn[i] === "skip" ? "sk" : dn[i] ? "on" : i === s ? "cur" : ""}"></i>`).join("")}</div>
     ${exDone ? "" : `<div class="kg">
       <button class="press" data-d="-2.5">−</button>
       <div class="v"><input id="kg" inputmode="decimal" placeholder="0" value="${esc(wVal)}"><span>kg ${best(x.id) ? `· récord ${best(x.id)}` : ""}</span></div>
       <button class="press" data-d="2.5">+</button></div>
-      <button class="btn main done-btn press" id="doneBtn">✓ TERMINÉ LA SERIE</button>`}
+      <button class="btn main done-btn press" id="doneBtn">✓ TERMINÉ LA SERIE</button>
+      ${s > 0 ? `<button class="btn ghost press" id="endEx">🏁 Ya no más: terminar este ejercicio</button>` : ""}`}
     ${exDone ? `<button class="btn main done-btn press" id="goNext">${ei + 1 < d.list.length ? "Siguiente ejercicio ›" : "Terminar 🏆"}</button>` : ""}
     <details class="how"><summary>📖 ¿Cómo se hace?</summary>
       <ol class="steps">${e.steps.map(t => `<li>${esc(t)}</li>`).join("")}</ol>
-      <div class="sec-t" style="margin-top:6px">Evita</div><ul class="errs">${e.errors.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+      ${e.errors.length ? "" : "<!--"}<div class="sec-t" style="margin-top:6px">Evita</div><ul class="errs">${e.errors.map(t => `<li>${esc(t)}</li>`).join("")}</ul>${e.errors.length ? "" : "-->"}
       ${e.note ? `<div class="note" style="margin:10px 0 0">💡 ${esc(e.note)}</div>` : ""}
     </details>
     <div class="nav2">
@@ -504,6 +731,12 @@ function viewEntrenar(di, eiArg){
     else { const nx = d.list[left.ei]; msg = `<small>Siguiente ejercicio</small>${esc(EXERCISES[nx.id].name)}`; }
     startRest(x.rest, msg, d.type, () => viewEntrenar(di, s + 1 < x.sets ? ei : left.ei));
   };
+  const ee = $("#endEx");
+  if(ee) ee.onclick = () => {
+    const a = getDone(di, ei); for(let i = 0; i < x.sets; i++) if(!a[i]) a[i] = "skip"; setDone(di, ei, a);
+    const left = nextPending(di);
+    left ? viewEntrenar(di, left.ei) : viewFin(di);
+  };
   const gn = $("#goNext");
   if(gn) gn.onclick = () => { const left = nextPending(di); left ? (location.hash = `#/entrenar/${di}/${left.ei}`) : viewFin(di); };
 }
@@ -515,7 +748,7 @@ function viewFin(di){
   const d = R.days[di];
   document.body.classList.add("workout"); keepAwake(false); stopRest();
   const startK = `start:${weekId()}:${di}`, st = store.get(startK, 0);
-  const mins = st ? Math.max(1, Math.round((Date.now() - st) / 60000)) : d.time;
+  const mins = st ? Math.max(1, Math.round((Date.now() - st) / 60000)) : dayTime(d);
   const hist = store.get("history", []);
   const key = `${weekId()}:${di}`;
   if(!hist.some(h => h.key === key)){
@@ -592,7 +825,7 @@ function viewProgreso(){
       <div class="muted" style="font-size:13px;font-weight:700;text-align:right">${h.sets} series<br>${h.mins} min</div></div>`).join("")
       : `<div class="card empty"><span class="e">🏁</span>Aún no terminas ningún día.<br>Cuando completes uno, aparecerá aquí.</div>`}
     <div class="label">Tus mejores pesos</div>
-    ${ids.length ? ids.map(id => `<div class="card pr"><img src="${imgOf(id)}/1.jpg" alt=""><div class="grow ell" style="font-weight:700">${esc(EXERCISES[id].name)}</div><b>${best(id)} kg</b></div>`).join("")
+    ${ids.length ? ids.map(id => `<div class="card pr"><img src="${img(id,1)}" alt=""><div class="grow ell" style="font-weight:700">${esc(EXERCISES[id].name)}</div><b>${best(id)} kg</b></div>`).join("")
       : `<div class="card empty"><span class="e">🏋️</span>Anota el peso al terminar cada serie<br>y aquí verás tus récords.</div>`}
   </main>`;
 }
@@ -609,11 +842,14 @@ function route(){
     case "ej": return viewEj(+p[1], +p[2]);
     case "entrenar": return viewEntrenar(+p[1], p[2] !== undefined ? +p[2] : undefined);
     case "progreso": return viewProgreso();
+    case "editar": return viewEditar(+p[1]);
+    case "agregar": return viewAgregar(+p[1]);
+    case "nuevo": return viewNuevo(+p[1], p[2]);
     default: return viewHoy();
   }
 }
 window.addEventListener("hashchange", route);
-route();
+idb.loadAll().then(route, route);
 
 if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>

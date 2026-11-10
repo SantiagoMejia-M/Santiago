@@ -5,6 +5,7 @@
 const EXERCISES = {
   // ---------------- EMPUJE ----------------
   Incline_Dumbbell_Press: {
+    cat: "pecho",
     name: "Press inclinado con mancuernas",
     equip: "Banco inclinable + mancuernas",
     muscles: "Pecho superior, hombro frontal, tríceps",
@@ -18,6 +19,7 @@ const EXERCISES = {
     errors: ["Banco demasiado vertical", "Codos totalmente abiertos (lastima el hombro)", "Rebotar abajo"]
   },
   Dumbbell_Bench_Press: {
+    cat: "pecho",
     name: "Press plano con mancuernas",
     equip: "Banco plano + mancuernas",
     muscles: "Pecho, tríceps, hombro frontal",
@@ -31,6 +33,7 @@ const EXERCISES = {
     errors: ["Levantar el glúteo del banco", "Bajar muy rápido", "Muñecas dobladas hacia atrás"]
   },
   Seated_Dumbbell_Press: {
+    cat: "hombro",
     name: "Press de hombro sentado con mancuernas",
     equip: "Banco inclinable (casi vertical) + mancuernas",
     muscles: "Hombros, tríceps",
@@ -43,6 +46,7 @@ const EXERCISES = {
     errors: ["Arquear mucho la espalda baja", "Bajar solo la mitad", "Chocar las mancuernas arriba"]
   },
   Side_Lateral_Raise: {
+    cat: "hombro",
     name: "Elevaciones laterales",
     equip: "Mancuernas (de pie)",
     muscles: "Hombro lateral (el que da anchura)",
@@ -55,6 +59,7 @@ const EXERCISES = {
     errors: ["Balancear el cuerpo para subir", "Subir por encima de los hombros", "Encoger los trapecios"]
   },
   Arnold_Dumbbell_Press: {
+    cat: "hombro",
     name: "Press Arnold",
     equip: "Banco inclinable (vertical) + mancuernas",
     muscles: "Hombros (frontal y lateral), tríceps",
@@ -66,6 +71,7 @@ const EXERCISES = {
     errors: ["Hacerlo con prisa", "Arquear la espalda"]
   },
   Hammer_Grip_Incline_DB_Bench_Press: {
+    cat: "pecho",
     name: "Press inclinado agarre neutro",
     equip: "Banco inclinable + mancuernas",
     muscles: "Pecho superior, tríceps",
@@ -77,6 +83,7 @@ const EXERCISES = {
     errors: ["Rebotar abajo", "Despegar la espalda del banco"]
   },
   Close_Grip_Dumbbell_Press: {
+    cat: "brazos",
     img: "Close-Grip_Dumbbell_Press",
     name: "Press cerrado con mancuernas",
     equip: "Banco plano + mancuernas",
@@ -92,6 +99,7 @@ const EXERCISES = {
 
   // ---------------- TIRÓN (mancuernas) ----------------
   One_Arm_Dumbbell_Row: {
+    cat: "espalda",
     img: "One-Arm_Dumbbell_Row",
     name: "Remo a una mano con mancuerna",
     equip: "Banco plano + mancuerna",
@@ -106,6 +114,7 @@ const EXERCISES = {
   },
 
   Incline_Dumbbell_Curl: {
+    cat: "brazos",
     name: "Curl inclinado con mancuernas",
     equip: "Banco inclinable + mancuernas",
     muscles: "Bíceps (gran estiramiento)",
@@ -117,6 +126,7 @@ const EXERCISES = {
     errors: ["Llevar los codos hacia adelante", "Despegar la espalda"]
   },
   Hammer_Curls: {
+    cat: "brazos",
     name: "Curl martillo",
     equip: "Mancuernas (de pie)",
     muscles: "Bíceps, braquial, antebrazo",
@@ -128,6 +138,7 @@ const EXERCISES = {
     errors: ["Balancear el cuerpo", "Mover los codos"]
   },
   Dumbbell_Incline_Row: {
+    cat: "espalda",
     name: "Remo con pecho apoyado",
     equip: "Banco inclinable + mancuernas",
     muscles: "Espalda media, dorsales",
@@ -140,6 +151,7 @@ const EXERCISES = {
     errors: ["Despegar el pecho del banco", "Encoger los hombros"]
   },
   Dumbbell_Shrug: {
+    cat: "espalda",
     name: "Encogimientos con mancuernas",
     equip: "Mancuernas (de pie)",
     muscles: "Trapecio",
@@ -157,6 +169,7 @@ const EXERCISES = {
 
   // ---------------- PIERNA (máquinas) ----------------
   Leg_Press: {
+    cat: "pierna",
     name: "Prensa de pierna",
     equip: "Prensa de discos",
     muscles: "Cuádriceps, glúteos",
@@ -170,6 +183,7 @@ const EXERCISES = {
   },
 
   Leg_Extensions: {
+    cat: "pierna",
     name: "Extensión de cuádriceps",
     equip: "Máquina de extensiones",
     muscles: "Cuádriceps",
@@ -182,6 +196,7 @@ const EXERCISES = {
     errors: ["Dejar caer el peso", "Levantar la cadera del asiento"]
   },
   Lying_Leg_Curls: {
+    cat: "pierna",
     name: "Curl femoral en máquina",
     equip: "Máquina de curl femoral (acostado o sentado)",
     muscles: "Femorales (isquiotibiales)",
@@ -196,6 +211,7 @@ const EXERCISES = {
 
   // ---------------- POLEAS ----------------
   Cable_Crossover: {
+    cat: "pecho",
     name: "Cruce de poleas (de arriba a abajo)",
     equip: "2 poleas altas + agarres de mano",
     muscles: "Pecho (parte media y baja)",
@@ -208,6 +224,7 @@ const EXERCISES = {
     errors: ["Doblar y estirar los codos (se vuelve press)", "Dejar que el peso te jale los brazos de golpe"]
   },
   Low_Cable_Crossover: {
+    cat: "pecho",
     name: "Cruce de poleas (de abajo a arriba)",
     equip: "2 poleas bajas + agarres de mano",
     muscles: "Pecho superior",
@@ -220,6 +237,7 @@ const EXERCISES = {
     errors: ["Usar demasiado peso", "Arquear la espalda baja"]
   },
   Standing_Low_Pulley_Deltoid_Raise: {
+    cat: "hombro",
     img: "Standing_Low-Pulley_Deltoid_Raise",
     name: "Elevación lateral en polea",
     equip: "Polea baja + agarre de mano",
@@ -233,6 +251,7 @@ const EXERCISES = {
     errors: ["Inclinarte para ayudarte", "Subir más arriba del hombro"]
   },
   Triceps_Pushdown_Rope: {
+    cat: "brazos",
     img: "Triceps_Pushdown_-_Rope_Attachment",
     name: "Jalón de tríceps con cuerda",
     equip: "Polea alta + cuerda",
@@ -247,6 +266,7 @@ const EXERCISES = {
     note: "¿No hay cuerda? Hazlo igual con el agarre en V o con un maneral."
   },
   Triceps_Pushdown_V: {
+    cat: "brazos",
     img: "Triceps_Pushdown_-_V-Bar_Attachment",
     name: "Jalón de tríceps con agarre en V",
     equip: "Polea alta + agarre en V (o maneral)",
@@ -260,6 +280,7 @@ const EXERCISES = {
     errors: ["Mover los hombros", "Usar el peso del cuerpo"]
   },
   Cable_Rope_Overhead_Triceps_Extension: {
+    cat: "brazos",
     name: "Tríceps sobre la cabeza en polea",
     equip: "Polea + cuerda (o maneral)",
     muscles: "Tríceps (cabeza larga)",
@@ -272,6 +293,7 @@ const EXERCISES = {
     errors: ["Abrir los codos", "Mover todo el cuerpo"]
   },
   Wide_Grip_Lat_Pulldown: {
+    cat: "espalda",
     img: "Wide-Grip_Lat_Pulldown",
     name: "Jalón al pecho",
     equip: "Polea alta + agarre de espalda (ancho)",
@@ -285,6 +307,7 @@ const EXERCISES = {
     errors: ["Echarte muy para atrás", "Jalar con los brazos en vez de la espalda", "Llevarlo detrás de la nuca"]
   },
   V_Bar_Pulldown: {
+    cat: "espalda",
     img: "V-Bar_Pulldown",
     name: "Jalón con agarre cerrado (V)",
     equip: "Polea alta + agarre en V",
@@ -298,6 +321,7 @@ const EXERCISES = {
     errors: ["Columpiarte", "Medias repeticiones"]
   },
   Seated_Cable_Rows: {
+    cat: "espalda",
     name: "Remo sentado en polea",
     equip: "Polea baja + agarre en V + banco plano",
     muscles: "Espalda media, dorsales",
@@ -310,6 +334,7 @@ const EXERCISES = {
     errors: ["Balancearte hacia atrás y adelante", "Redondear la espalda"]
   },
   Seated_One_Arm_Cable_Row: {
+    cat: "espalda",
     img: "Seated_One-arm_Cable_Pulley_Rows",
     name: "Remo a una mano en polea",
     equip: "Polea baja/media + agarre de mano",
@@ -323,6 +348,7 @@ const EXERCISES = {
     errors: ["Girar todo el torso", "Jalar con el bíceps"]
   },
   Straight_Arm_Pulldown: {
+    cat: "espalda",
     img: "Straight-Arm_Pulldown",
     name: "Jalón con brazos rectos",
     equip: "Polea alta + agarre de espalda (o cuerda)",
@@ -336,6 +362,7 @@ const EXERCISES = {
     errors: ["Doblar los codos", "Mover todo el cuerpo"]
   },
   Face_Pull: {
+    cat: "hombro",
     name: "Face pull",
     equip: "Polea alta + cuerda (o 2 manerales)",
     muscles: "Hombro posterior, espalda alta",
@@ -348,6 +375,7 @@ const EXERCISES = {
     errors: ["Usar mucho peso", "Bajar los codos"]
   },
   Cable_Rear_Delt_Fly: {
+    cat: "hombro",
     name: "Pájaros en polea",
     equip: "2 poleas a la altura de los hombros",
     muscles: "Hombro posterior",
@@ -360,6 +388,7 @@ const EXERCISES = {
     errors: ["Encoger los hombros", "Usar impulso"]
   },
   Standing_Biceps_Cable_Curl: {
+    cat: "brazos",
     name: "Curl de bíceps en polea",
     equip: "Polea baja + agarre",
     muscles: "Bíceps",
@@ -372,6 +401,7 @@ const EXERCISES = {
     errors: ["Mover los codos", "Balancearte"]
   },
   Cable_Hammer_Curl_Rope: {
+    cat: "brazos",
     img: "Cable_Hammer_Curls_-_Rope_Attachment",
     name: "Curl martillo en polea con cuerda",
     equip: "Polea baja + cuerda",
@@ -386,6 +416,7 @@ const EXERCISES = {
 
   // ---------------- PIERNA (sin barra) ----------------
   Goblet_Squat: {
+    cat: "pierna",
     name: "Sentadilla goblet con mancuerna",
     equip: "1 mancuerna",
     muscles: "Cuádriceps, glúteos",
@@ -398,6 +429,7 @@ const EXERCISES = {
     errors: ["Rodillas hacia adentro", "Levantar los talones", "Encorvar la espalda"]
   },
   Dumbbell_Squat: {
+    cat: "pierna",
     name: "Sentadilla con mancuernas",
     equip: "Mancuernas",
     muscles: "Cuádriceps, glúteos",
@@ -410,6 +442,7 @@ const EXERCISES = {
     errors: ["Inclinarte mucho al frente", "Rodillas hacia adentro"]
   },
   Dumbbell_Romanian_Deadlift: {
+    cat: "pierna",
     img: "Stiff-Legged_Dumbbell_Deadlift",
     name: "Peso muerto rumano con mancuernas",
     equip: "Mancuernas",
@@ -423,6 +456,7 @@ const EXERCISES = {
     errors: ["Redondear la espalda", "Doblar mucho las rodillas", "Alejar las mancuernas de las piernas"]
   },
   Calf_Press_Leg_Press: {
+    cat: "pierna",
     img: "Calf_Press_On_The_Leg_Press_Machine",
     name: "Pantorrilla en la prensa",
     equip: "Prensa de discos",
@@ -438,6 +472,7 @@ const EXERCISES = {
   }
 };
 
+// sets: 3 = ejercicio principal ⭐, 2 = complementario. time se calcula solo.
 // type: empuje | tiron | pierna | descanso  (define color e icono de cada día)
 const ROUTINES = [
   {
@@ -446,72 +481,72 @@ const ROUTINES = [
     subtitle: "Empuje · Tirón · Pierna × 2",
     days: [
       {
-        day: "Lunes", short: "L", type: "empuje", title: "Empuje A", focus: "Pecho · Hombro · Tríceps", emphasis: "Énfasis en pecho", time: 75,
+        day: "Lunes", short: "L", type: "empuje", title: "Empuje A", focus: "Pecho · Hombro · Tríceps", emphasis: "Énfasis en pecho",
         list: [
-          { id: "Incline_Dumbbell_Press", sets: 4, reps: "8–10", rest: 120 },
+          { id: "Incline_Dumbbell_Press", sets: 3, reps: "8–10", rest: 120 },
           { id: "Dumbbell_Bench_Press", sets: 3, reps: "8–10", rest: 120 },
-          { id: "Cable_Crossover", sets: 3, reps: "12–15", rest: 75 },
+          { id: "Cable_Crossover", sets: 2, reps: "12–15", rest: 75 },
           { id: "Seated_Dumbbell_Press", sets: 3, reps: "8–10", rest: 90 },
-          { id: "Side_Lateral_Raise", sets: 4, reps: "12–15", rest: 60 },
-          { id: "Triceps_Pushdown_Rope", sets: 3, reps: "10–12", rest: 60 },
-          { id: "Cable_Rope_Overhead_Triceps_Extension", sets: 3, reps: "12", rest: 60 }
+          { id: "Side_Lateral_Raise", sets: 3, reps: "12–15", rest: 60 },
+          { id: "Triceps_Pushdown_Rope", sets: 2, reps: "10–12", rest: 60 },
+          { id: "Cable_Rope_Overhead_Triceps_Extension", sets: 2, reps: "12", rest: 60 }
         ]
       },
       {
-        day: "Martes", short: "M", type: "tiron", title: "Tirón A", focus: "Espalda · Bíceps", emphasis: "Énfasis en anchura", time: 75,
+        day: "Martes", short: "M", type: "tiron", title: "Tirón A", focus: "Espalda · Bíceps", emphasis: "Énfasis en anchura",
         list: [
-          { id: "Wide_Grip_Lat_Pulldown", sets: 4, reps: "8–10", rest: 120 },
-          { id: "Seated_Cable_Rows", sets: 4, reps: "10", rest: 90 },
+          { id: "Wide_Grip_Lat_Pulldown", sets: 3, reps: "8–10", rest: 120 },
+          { id: "Seated_Cable_Rows", sets: 3, reps: "10", rest: 90 },
           { id: "One_Arm_Dumbbell_Row", sets: 3, reps: "10 c/lado", rest: 75 },
-          { id: "Straight_Arm_Pulldown", sets: 3, reps: "12–15", rest: 60 },
-          { id: "Face_Pull", sets: 3, reps: "15", rest: 60 },
+          { id: "Straight_Arm_Pulldown", sets: 2, reps: "12–15", rest: 60 },
+          { id: "Face_Pull", sets: 2, reps: "15", rest: 60 },
           { id: "Incline_Dumbbell_Curl", sets: 3, reps: "10–12", rest: 75 },
-          { id: "Hammer_Curls", sets: 3, reps: "12", rest: 60 }
+          { id: "Hammer_Curls", sets: 2, reps: "12", rest: 60 }
         ]
       },
       {
-        day: "Miércoles", short: "M", type: "pierna", title: "Pierna A", focus: "Cuádriceps · Femoral · Pantorrilla", emphasis: "Énfasis en cuádriceps", time: 70,
+        day: "Miércoles", short: "M", type: "pierna", title: "Pierna A", focus: "Cuádriceps · Femoral · Pantorrilla", emphasis: "Énfasis en cuádriceps",
         list: [
-          { id: "Leg_Press", sets: 4, reps: "10–12", rest: 120 },
-          { id: "Goblet_Squat", sets: 3, reps: "10–12", rest: 90 },
-          { id: "Leg_Extensions", sets: 4, reps: "12–15", rest: 75 },
-          { id: "Lying_Leg_Curls", sets: 4, reps: "10–12", rest: 75 },
-          { id: "Dumbbell_Romanian_Deadlift", sets: 3, reps: "10", rest: 90 },
-          { id: "Calf_Press_Leg_Press", sets: 4, reps: "15", rest: 60 }
+          { id: "Leg_Press", sets: 3, reps: "10–12", rest: 120 },
+          { id: "Goblet_Squat", sets: 2, reps: "10–12", rest: 90 },
+          { id: "Leg_Extensions", sets: 3, reps: "12–15", rest: 75 },
+          { id: "Lying_Leg_Curls", sets: 3, reps: "10–12", rest: 75 },
+          { id: "Dumbbell_Romanian_Deadlift", sets: 2, reps: "10", rest: 90 },
+          { id: "Calf_Press_Leg_Press", sets: 3, reps: "15", rest: 60 }
         ]
       },
       {
-        day: "Jueves", short: "J", type: "empuje", title: "Empuje B", focus: "Pecho · Hombro · Tríceps", emphasis: "Énfasis en hombro", time: 75,
+        day: "Jueves", short: "J", type: "empuje", title: "Empuje B", focus: "Pecho · Hombro · Tríceps", emphasis: "Énfasis en hombro",
         list: [
-          { id: "Arnold_Dumbbell_Press", sets: 4, reps: "8–10", rest: 120 },
-          { id: "Hammer_Grip_Incline_DB_Bench_Press", sets: 4, reps: "8–10", rest: 120 },
-          { id: "Low_Cable_Crossover", sets: 3, reps: "12–15", rest: 75 },
-          { id: "Standing_Low_Pulley_Deltoid_Raise", sets: 4, reps: "12–15 c/brazo", rest: 45 },
-          { id: "Close_Grip_Dumbbell_Press", sets: 3, reps: "10", rest: 90 },
-          { id: "Triceps_Pushdown_V", sets: 3, reps: "12", rest: 60 }
+          { id: "Arnold_Dumbbell_Press", sets: 3, reps: "8–10", rest: 120 },
+          { id: "Hammer_Grip_Incline_DB_Bench_Press", sets: 3, reps: "8–10", rest: 120 },
+          { id: "Low_Cable_Crossover", sets: 2, reps: "12–15", rest: 75 },
+          { id: "Standing_Low_Pulley_Deltoid_Raise", sets: 3, reps: "12–15 c/brazo", rest: 45 },
+          { id: "Close_Grip_Dumbbell_Press", sets: 2, reps: "10", rest: 90 },
+          { id: "Triceps_Pushdown_V", sets: 2, reps: "12", rest: 60 }
         ]
       },
       {
-        day: "Viernes", short: "V", type: "tiron", title: "Tirón B", focus: "Espalda · Bíceps", emphasis: "Énfasis en grosor", time: 75,
+        day: "Viernes", short: "V", type: "tiron", title: "Tirón B", focus: "Espalda · Bíceps", emphasis: "Énfasis en grosor",
         list: [
-          { id: "V_Bar_Pulldown", sets: 4, reps: "8–10", rest: 120 },
-          { id: "Dumbbell_Incline_Row", sets: 4, reps: "10", rest: 90 },
-          { id: "Seated_One_Arm_Cable_Row", sets: 3, reps: "10 c/lado", rest: 60 },
-          { id: "Cable_Rear_Delt_Fly", sets: 3, reps: "15", rest: 60 },
-          { id: "Dumbbell_Shrug", sets: 3, reps: "12–15", rest: 60 },
+          { id: "V_Bar_Pulldown", sets: 3, reps: "8–10", rest: 120 },
+          { id: "Dumbbell_Incline_Row", sets: 3, reps: "10", rest: 90 },
+          { id: "Seated_One_Arm_Cable_Row", sets: 2, reps: "10 c/lado", rest: 60 },
+          { id: "Cable_Rear_Delt_Fly", sets: 2, reps: "15", rest: 60 },
+          { id: "Dumbbell_Shrug", sets: 2, reps: "12–15", rest: 60 },
           { id: "Standing_Biceps_Cable_Curl", sets: 3, reps: "10–12", rest: 60 },
-          { id: "Cable_Hammer_Curl_Rope", sets: 3, reps: "12", rest: 60 }
+          { id: "Cable_Hammer_Curl_Rope", sets: 2, reps: "12", rest: 60 }
         ]
       },
       {
-        day: "Sábado", short: "S", type: "pierna", title: "Pierna B", focus: "Femoral · Glúteo · Cuádriceps", emphasis: "Énfasis en cadena posterior", time: 70,
+        day: "Sábado", short: "S", type: "pierna", title: "Pierna B", focus: "Femoral · Glúteo · Cuádriceps", emphasis: "Énfasis en cadena posterior",
         list: [
-          { id: "Dumbbell_Romanian_Deadlift", sets: 4, reps: "8–10", rest: 120 },
-          { id: "Lying_Leg_Curls", sets: 4, reps: "10–12", rest: 75 },
-          { id: "Leg_Press", sets: 4, reps: "10–12 (pies altos)", rest: 120 },
-          { id: "Dumbbell_Squat", sets: 3, reps: "12", rest: 90 },
-          { id: "Leg_Extensions", sets: 3, reps: "15", rest: 60 },
-          { id: "Calf_Press_Leg_Press", sets: 4, reps: "15", rest: 60 }
+          { id: "Dumbbell_Romanian_Deadlift", sets: 3, reps: "8–10", rest: 120 },
+          { id: "Lying_Leg_Curls", sets: 3, reps: "10–12", rest: 75 },
+          { id: "Leg_Press", sets: 3, reps: "10–12 (pies altos)", rest: 120 },
+          { id: "Dumbbell_Squat", sets: 2, reps: "12", rest: 90 },
+          { id: "Leg_Extensions", sets: 2, reps: "15", rest: 60 },
+          { id: "Calf_Press_Leg_Press", sets: 3, reps: "15", rest: 60 }
         ]
       },
       { day: "Domingo", short: "D", type: "descanso", title: "Descanso", focus: "Recupera para la próxima semana", emphasis: "Descanso total", list: [] }

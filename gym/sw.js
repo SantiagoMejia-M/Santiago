@@ -1,7 +1,7 @@
 // Guarda la app en el celular para que funcione sin internet en el gym.
 // La página y la rutina se buscan primero en internet (para recibir actualizaciones);
 // las imágenes salen directo del celular.
-const CACHE = "mi-gym-v4";
+const CACHE = "mi-gym-v5";
 const FILES = [
   "./", "index.html", "data.js", "manifest.json", "icon-192.png", "icon-512.png",
   "img/Arnold_Dumbbell_Press/0.jpg",
