@@ -1,6 +1,6 @@
-// Rutina "Alpha" — adaptada al equipo del gym:
-// Tren superior: mancuernas, 1 banco plano, 1 banco inclinable, 2 jaulas (barra olímpica + barra de dominadas).
-// Pierna: máquinas (prensa, extensiones, curl femoral, hack, pantorrilla) + jaulas.
+// Rutina "Alpha" — adaptada al equipo del gym (SIN barras):
+// Tren superior: mancuernas, 1 banco plano, 1 banco inclinable, 2 poleas con agarres (espalda, de mano, cuerda, V).
+// Pierna: prensa de discos, extensión de cuádriceps, curl femoral + mancuernas.
 
 const EXERCISES = {
   // ---------------- EMPUJE ----------------
@@ -30,18 +30,6 @@ const EXERCISES = {
     ],
     errors: ["Levantar el glúteo del banco", "Bajar muy rápido", "Muñecas dobladas hacia atrás"]
   },
-  Incline_Dumbbell_Flyes: {
-    name: "Aperturas inclinadas con mancuernas",
-    equip: "Banco inclinable + mancuernas",
-    muscles: "Pecho (sobre todo la parte alta)",
-    steps: [
-      "Banco a 30°. Mancuernas arriba, palmas mirándose.",
-      "Codos ligeramente doblados y BLOQUEADOS en ese ángulo todo el ejercicio.",
-      "Abre los brazos en arco como si abrazaras un barril grande, hasta sentir el estiramiento.",
-      "Regresa por el mismo arco apretando el pecho."
-    ],
-    errors: ["Doblar y estirar los codos (se vuelve press)", "Bajar demasiado con mucho peso", "Usar peso pesado: aquí manda el control"]
-  },
   Seated_Dumbbell_Press: {
     name: "Press de hombro sentado con mancuernas",
     equip: "Banco inclinable (casi vertical) + mancuernas",
@@ -66,30 +54,6 @@ const EXERCISES = {
     ],
     errors: ["Balancear el cuerpo para subir", "Subir por encima de los hombros", "Encoger los trapecios"]
   },
-  Lying_Dumbbell_Tricep_Extension: {
-    name: "Rompecráneos con mancuernas",
-    equip: "Banco plano + mancuernas",
-    muscles: "Tríceps",
-    steps: [
-      "Acostado en banco plano, mancuernas arriba con palmas mirándose.",
-      "Deja los codos fijos apuntando al techo.",
-      "Dobla solo los codos bajando las mancuernas a los lados de la cabeza.",
-      "Extiende los brazos apretando el tríceps."
-    ],
-    errors: ["Mover los codos hacia adelante/atrás", "Abrir los codos hacia afuera"]
-  },
-  Standing_Dumbbell_Triceps_Extension: {
-    name: "Extensión de tríceps sobre la cabeza",
-    equip: "1 mancuerna (sentado en banco o de pie)",
-    muscles: "Tríceps (cabeza larga)",
-    steps: [
-      "Agarra una mancuerna con las dos manos por el disco de arriba.",
-      "Súbela por encima de la cabeza con brazos estirados.",
-      "Baja la mancuerna por detrás de la cabeza doblando los codos; codos apuntando al frente/arriba.",
-      "Sube estirando los brazos."
-    ],
-    errors: ["Abrir mucho los codos", "Arquear la espalda baja"]
-  },
   Arnold_Dumbbell_Press: {
     name: "Press Arnold",
     equip: "Banco inclinable (vertical) + mancuernas",
@@ -112,29 +76,6 @@ const EXERCISES = {
     ],
     errors: ["Rebotar abajo", "Despegar la espalda del banco"]
   },
-  Dumbbell_Flyes: {
-    name: "Aperturas planas con mancuernas",
-    equip: "Banco plano + mancuernas",
-    muscles: "Pecho",
-    steps: [
-      "Acostado en banco plano, mancuernas arriba con palmas mirándose.",
-      "Codos ligeramente doblados y fijos.",
-      "Abre en arco hasta sentir el estiramiento del pecho (no más abajo que el banco).",
-      "Cierra en el mismo arco apretando el pecho."
-    ],
-    errors: ["Convertirlo en press", "Bajar demasiado"]
-  },
-  Seated_Side_Lateral_Raise: {
-    name: "Elevaciones laterales sentado",
-    equip: "Banco + mancuernas",
-    muscles: "Hombro lateral",
-    steps: [
-      "Sentado en la orilla del banco, espalda recta, mancuernas a los lados.",
-      "Sube los brazos hacia los lados hasta la altura de los hombros.",
-      "Baja lento. Sentado no puedes hacer trampa con impulso."
-    ],
-    errors: ["Subir más arriba de los hombros", "Encoger los hombros"]
-  },
   Close_Grip_Dumbbell_Press: {
     img: "Close-Grip_Dumbbell_Press",
     name: "Press cerrado con mancuernas",
@@ -149,32 +90,7 @@ const EXERCISES = {
   },
 
 
-  // ---------------- TIRÓN ----------------
-  Pullups: {
-    name: "Dominadas (agarre prono)",
-    equip: "Barra de la jaula",
-    muscles: "Dorsales, espalda alta, bíceps",
-    steps: [
-      "Agarra la barra con palmas al frente, un poco más abierto que los hombros.",
-      "Cuelga con brazos estirados y hombros 'activos' (lejos de las orejas).",
-      "Sube llevando el pecho hacia la barra, piensa en meter los codos a los bolsillos.",
-      "Baja lento hasta estirar los brazos."
-    ],
-    errors: ["Medias repeticiones", "Columpiarse"],
-    note: "¿No te salen 6? Haz negativas: brinca arriba y baja en 4–5 segundos. O pon una liga de resistencia en la barra."
-  },
-  Bent_Over_Barbell_Row: {
-    name: "Remo con barra",
-    equip: "Jaula (barra a la altura de la rodilla)",
-    muscles: "Espalda media, dorsales, bíceps",
-    steps: [
-      "Pon la barra en los ganchos de la jaula a la altura de las rodillas y sácala de ahí (más fácil que del piso).",
-      "Rodillas un poco dobladas, inclina el torso a ~45° con la espalda recta.",
-      "Jala la barra hacia el ombligo apretando la espalda.",
-      "Baja controlado sin perder la postura."
-    ],
-    errors: ["Redondear la espalda", "Usar impulso del cuerpo", "Jalar al pecho en vez del ombligo"]
-  },
+  // ---------------- TIRÓN (mancuernas) ----------------
   One_Arm_Dumbbell_Row: {
     img: "One-Arm_Dumbbell_Row",
     name: "Remo a una mano con mancuerna",
@@ -189,19 +105,6 @@ const EXERCISES = {
     errors: ["Girar el torso", "Jalar con el bíceps en vez de la espalda"]
   },
 
-  Seated_Bent_Over_Rear_Delt_Raise: {
-    img: "Seated_Bent-Over_Rear_Delt_Raise",
-    name: "Pájaros sentado (deltoides posterior)",
-    equip: "Banco + mancuernas ligeras",
-    muscles: "Hombro posterior, espalda alta",
-    steps: [
-      "Sentado en la orilla del banco, inclina el pecho sobre los muslos.",
-      "Mancuernas colgando debajo de las piernas, palmas mirándose.",
-      "Abre los brazos hacia los lados como alas, codos ligeramente doblados.",
-      "Baja lento."
-    ],
-    errors: ["Usar mucho peso", "Levantar el torso al subir"]
-  },
   Incline_Dumbbell_Curl: {
     name: "Curl inclinado con mancuernas",
     equip: "Banco inclinable + mancuernas",
@@ -223,20 +126,6 @@ const EXERCISES = {
       "Sube las mancuernas sin girar la muñeca y baja lento."
     ],
     errors: ["Balancear el cuerpo", "Mover los codos"]
-  },
-  Chin_Up: {
-    img: "Chin-Up",
-    name: "Dominadas supinas (chin-ups)",
-    equip: "Barra de la jaula",
-    muscles: "Dorsales, bíceps",
-    steps: [
-      "Agarra la barra con palmas hacia ti, al ancho de los hombros.",
-      "Cuelga con brazos estirados.",
-      "Sube hasta pasar la barbilla sobre la barra.",
-      "Baja lento hasta estirar."
-    ],
-    errors: ["Columpiarse", "No bajar completo"],
-    note: "Si no salen, haz negativas lentas (5 seg bajando)."
   },
   Dumbbell_Incline_Row: {
     name: "Remo con pecho apoyado",
@@ -262,64 +151,14 @@ const EXERCISES = {
     errors: ["Girar los hombros en círculo", "Doblar los codos"]
   },
 
-  Barbell_Curl: {
-    name: "Curl con barra",
-    equip: "Barra de la jaula (o barra Z si hay)",
-    muscles: "Bíceps",
-    steps: [
-      "De pie, barra con palmas al frente, ancho de hombros.",
-      "Codos pegados al cuerpo y fijos.",
-      "Sube la barra hasta el pecho apretando el bíceps.",
-      "Baja lento hasta estirar los brazos."
-    ],
-    errors: ["Balancear la cadera", "Mover los codos hacia adelante"]
-  },
 
 
 
-  Bent_Over_Two_Dumbbell_Row: {
-    img: "Bent_Over_Two-Dumbbell_Row",
-    name: "Remo inclinado con 2 mancuernas",
-    equip: "Mancuernas (de pie)",
-    muscles: "Espalda media, dorsales, bíceps",
-    steps: [
-      "De pie con una mancuerna en cada mano, rodillas un poco dobladas.",
-      "Inclina el torso hacia adelante (~45°) con la espalda recta.",
-      "Jala las dos mancuernas hacia la cintura apretando la espalda.",
-      "Baja controlado sin perder la postura."
-    ],
-    errors: ["Redondear la espalda", "Pararte derecho para ayudarte con el impulso"]
-  },
-  Dumbbell_Alternate_Bicep_Curl: {
-    name: "Curl alterno con mancuernas",
-    equip: "Mancuernas (de pie)",
-    muscles: "Bíceps",
-    steps: [
-      "De pie, mancuernas a los lados con las palmas mirándose.",
-      "Sube una mancuerna girando la muñeca para terminar con la palma hacia ti.",
-      "Aprieta arriba, baja lento y cambia de brazo."
-    ],
-    errors: ["Balancear el cuerpo", "Mover el codo hacia adelante"]
-  },
 
-  // ---------------- PIERNA ----------------
-  Barbell_Squat: {
-    name: "Sentadilla con barra",
-    equip: "Jaula + barra",
-    muscles: "Cuádriceps, glúteos, femoral",
-    steps: [
-      "Pon la barra a la altura de tu pecho en la jaula y los seguros a la altura de tu sentadilla más baja.",
-      "Barra sobre los trapecios (no sobre el cuello), agarre firme.",
-      "Pies al ancho de hombros, puntas un poco hacia afuera.",
-      "Baja como sentándote atrás, rodillas en dirección de las puntas, pecho arriba.",
-      "Baja hasta que la cadera quede a la altura de las rodillas o más abajo y sube empujando el piso."
-    ],
-    errors: ["Rodillas hacia adentro", "Levantar talones", "Redondear la espalda abajo"],
-    note: "Siempre usa los seguros de la jaula: si no puedes subir, dejas la barra ahí."
-  },
+  // ---------------- PIERNA (máquinas) ----------------
   Leg_Press: {
     name: "Prensa de pierna",
-    equip: "Máquina de prensa",
+    equip: "Prensa de discos",
     muscles: "Cuádriceps, glúteos",
     steps: [
       "Espalda y glúteo pegados al respaldo.",
@@ -343,169 +182,339 @@ const EXERCISES = {
     errors: ["Dejar caer el peso", "Levantar la cadera del asiento"]
   },
   Lying_Leg_Curls: {
-    name: "Curl femoral acostado",
-    equip: "Máquina de curl femoral acostado",
+    name: "Curl femoral en máquina",
+    equip: "Máquina de curl femoral (acostado o sentado)",
     muscles: "Femorales (isquiotibiales)",
     steps: [
-      "Acostado boca abajo, rodillas justo fuera del banco.",
-      "Rodillo arriba de los talones.",
+      "Ajusta la máquina para que tus rodillas queden en el eje (donde gira).",
+      "El rodillo va justo arriba de los talones.",
       "Dobla las piernas llevando el rodillo hacia los glúteos.",
       "Baja lento sin dejar que choquen las pesas."
     ],
     errors: ["Levantar la cadera", "Bajar rápido"]
   },
-  Standing_Calf_Raises: {
-    name: "Pantorrilla de pie",
-    equip: "Máquina de pantorrilla de pie",
-    muscles: "Pantorrillas (gemelos)",
+
+  // ---------------- POLEAS ----------------
+  Cable_Crossover: {
+    name: "Cruce de poleas (de arriba a abajo)",
+    equip: "2 poleas altas + agarres de mano",
+    muscles: "Pecho (parte media y baja)",
     steps: [
-      "Hombros bajo las almohadillas, puntas de los pies en la orilla del escalón.",
-      "Baja los talones lo más posible (estiramiento) y aguanta 1 seg.",
-      "Sube lo más alto que puedas y aprieta 1 seg."
+      "Pon las dos poleas arriba y agarra un maneral en cada mano.",
+      "Da un paso al frente, un pie delante del otro, torso un poco inclinado.",
+      "Codos ligeramente doblados y fijos. Junta las manos al frente y abajo, a la altura del ombligo.",
+      "Aprieta el pecho 1 seg y regresa lento hasta sentir el estiramiento."
     ],
-    errors: ["Rebotar abajo", "Doblar las rodillas para ayudarte"]
+    errors: ["Doblar y estirar los codos (se vuelve press)", "Dejar que el peso te jale los brazos de golpe"]
   },
-  Romanian_Deadlift: {
-    name: "Peso muerto rumano",
-    equip: "Jaula + barra (o mancuernas)",
-    muscles: "Femorales, glúteos, espalda baja",
+  Low_Cable_Crossover: {
+    name: "Cruce de poleas (de abajo a arriba)",
+    equip: "2 poleas bajas + agarres de mano",
+    muscles: "Pecho superior",
     steps: [
-      "Toma la barra de los ganchos de la jaula a la altura de la cadera.",
-      "Rodillas un poco dobladas y FIJAS en ese ángulo.",
-      "Lleva la cadera hacia atrás bajando la barra pegada a las piernas, espalda recta.",
-      "Baja hasta sentir estiramiento fuerte en el femoral (aprox. a media espinilla).",
-      "Sube empujando la cadera al frente y aprieta glúteos."
+      "Pon las dos poleas abajo y agarra un maneral en cada mano.",
+      "Párate en medio, brazos abajo a los lados, codos un poco doblados.",
+      "Sube las manos hacia el frente y arriba hasta juntarlas a la altura de la barbilla.",
+      "Aprieta y baja lento."
     ],
-    errors: ["Redondear la espalda", "Doblar mucho las rodillas (se vuelve sentadilla)", "Alejar la barra del cuerpo"]
+    errors: ["Usar demasiado peso", "Arquear la espalda baja"]
+  },
+  Standing_Low_Pulley_Deltoid_Raise: {
+    img: "Standing_Low-Pulley_Deltoid_Raise",
+    name: "Elevación lateral en polea",
+    equip: "Polea baja + agarre de mano",
+    muscles: "Hombro lateral",
+    steps: [
+      "Polea abajo. Párate de lado a la máquina y agarra el maneral con la mano más lejana.",
+      "El cable pasa por delante de tu cuerpo.",
+      "Sube el brazo hacia el lado hasta la altura del hombro, codo un poco doblado.",
+      "Baja lento. Termina un brazo y cambia."
+    ],
+    errors: ["Inclinarte para ayudarte", "Subir más arriba del hombro"]
+  },
+  Triceps_Pushdown_Rope: {
+    img: "Triceps_Pushdown_-_Rope_Attachment",
+    name: "Jalón de tríceps con cuerda",
+    equip: "Polea alta + cuerda",
+    muscles: "Tríceps",
+    steps: [
+      "Polea arriba con la cuerda. Agárrala con las palmas mirándose.",
+      "Codos pegados a los costados y quietos.",
+      "Empuja hacia abajo y al final abre la cuerda hacia los lados.",
+      "Sube lento hasta que los antebrazos queden paralelos al piso."
+    ],
+    errors: ["Despegar los codos del cuerpo", "Echarte encima del peso"],
+    note: "¿No hay cuerda? Hazlo igual con el agarre en V o con un maneral."
+  },
+  Triceps_Pushdown_V: {
+    img: "Triceps_Pushdown_-_V-Bar_Attachment",
+    name: "Jalón de tríceps con agarre en V",
+    equip: "Polea alta + agarre en V (o maneral)",
+    muscles: "Tríceps",
+    steps: [
+      "Polea arriba con el agarre en V.",
+      "Codos pegados al cuerpo.",
+      "Empuja hacia abajo hasta estirar los brazos y aprieta.",
+      "Sube lento sin mover los codos."
+    ],
+    errors: ["Mover los hombros", "Usar el peso del cuerpo"]
+  },
+  Cable_Rope_Overhead_Triceps_Extension: {
+    name: "Tríceps sobre la cabeza en polea",
+    equip: "Polea + cuerda (o maneral)",
+    muscles: "Tríceps (cabeza larga)",
+    steps: [
+      "Polea abajo o a media altura con la cuerda. Agárrala y date la vuelta (de espaldas a la máquina).",
+      "Manos detrás de la cabeza, codos apuntando al frente/arriba.",
+      "Estira los brazos hacia arriba.",
+      "Regresa lento sintiendo el estiramiento del tríceps."
+    ],
+    errors: ["Abrir los codos", "Mover todo el cuerpo"]
+  },
+  Wide_Grip_Lat_Pulldown: {
+    img: "Wide-Grip_Lat_Pulldown",
+    name: "Jalón al pecho",
+    equip: "Polea alta + agarre de espalda (ancho)",
+    muscles: "Dorsales (espalda ancha), bíceps",
+    steps: [
+      "Polea arriba con el agarre ancho. Siéntate (en el banco) o hinca una rodilla para quedar estable.",
+      "Agarre más abierto que los hombros, pecho arriba.",
+      "Jala hacia la parte alta del pecho llevando los codos hacia abajo y atrás.",
+      "Sube lento hasta estirar bien los brazos."
+    ],
+    errors: ["Echarte muy para atrás", "Jalar con los brazos en vez de la espalda", "Llevarlo detrás de la nuca"]
+  },
+  V_Bar_Pulldown: {
+    img: "V-Bar_Pulldown",
+    name: "Jalón con agarre cerrado (V)",
+    equip: "Polea alta + agarre en V",
+    muscles: "Dorsales, espalda media, bíceps",
+    steps: [
+      "Polea arriba con el agarre en V (palmas mirándose). Siéntate en el banco frente a la polea.",
+      "Pecho arriba, ligera inclinación hacia atrás.",
+      "Jala hasta la parte alta del pecho, codos pegados al cuerpo.",
+      "Sube lento estirando."
+    ],
+    errors: ["Columpiarte", "Medias repeticiones"]
+  },
+  Seated_Cable_Rows: {
+    name: "Remo sentado en polea",
+    equip: "Polea baja + agarre en V + banco plano",
+    muscles: "Espalda media, dorsales",
+    steps: [
+      "Polea abajo con el agarre en V. Siéntate en el banco (o en el piso) frente a la polea, pies apoyados.",
+      "Espalda recta, brazos estirados.",
+      "Jala hacia el ombligo sacando pecho y juntando los omóplatos.",
+      "Regresa lento estirando los brazos sin encorvarte."
+    ],
+    errors: ["Balancearte hacia atrás y adelante", "Redondear la espalda"]
+  },
+  Seated_One_Arm_Cable_Row: {
+    img: "Seated_One-arm_Cable_Pulley_Rows",
+    name: "Remo a una mano en polea",
+    equip: "Polea baja/media + agarre de mano",
+    muscles: "Dorsal, espalda media",
+    steps: [
+      "Polea a media altura o abajo con un maneral.",
+      "Jala el codo hacia atrás pegado al cuerpo, llevando la mano a la cadera.",
+      "Aprieta la espalda 1 seg y regresa estirando el brazo.",
+      "Termina un lado y cambia."
+    ],
+    errors: ["Girar todo el torso", "Jalar con el bíceps"]
+  },
+  Straight_Arm_Pulldown: {
+    img: "Straight-Arm_Pulldown",
+    name: "Jalón con brazos rectos",
+    equip: "Polea alta + agarre de espalda (o cuerda)",
+    muscles: "Dorsales",
+    steps: [
+      "Polea arriba. De pie frente a la máquina, agarra con brazos casi rectos.",
+      "Inclina un poco el torso hacia adelante.",
+      "Baja el agarre en arco hasta los muslos sin doblar los codos.",
+      "Sube lento hasta la altura de la cabeza."
+    ],
+    errors: ["Doblar los codos", "Mover todo el cuerpo"]
+  },
+  Face_Pull: {
+    name: "Face pull",
+    equip: "Polea alta + cuerda (o 2 manerales)",
+    muscles: "Hombro posterior, espalda alta",
+    steps: [
+      "Polea a la altura de la cara con la cuerda.",
+      "Jala la cuerda hacia tu cara abriendo las manos hacia los lados.",
+      "Codos altos, aprieta los omóplatos 1 seg.",
+      "Regresa lento."
+    ],
+    errors: ["Usar mucho peso", "Bajar los codos"]
+  },
+  Cable_Rear_Delt_Fly: {
+    name: "Pájaros en polea",
+    equip: "2 poleas a la altura de los hombros",
+    muscles: "Hombro posterior",
+    steps: [
+      "Poleas a la altura de los hombros. Cruza los cables: la mano derecha agarra el de la izquierda y viceversa.",
+      "Brazos al frente, codos un poco doblados.",
+      "Abre los brazos hacia los lados y atrás hasta formar una T.",
+      "Regresa lento."
+    ],
+    errors: ["Encoger los hombros", "Usar impulso"]
+  },
+  Standing_Biceps_Cable_Curl: {
+    name: "Curl de bíceps en polea",
+    equip: "Polea baja + agarre",
+    muscles: "Bíceps",
+    steps: [
+      "Polea abajo. De pie frente a la máquina, palmas hacia arriba.",
+      "Codos pegados al cuerpo.",
+      "Sube el agarre hasta el pecho y aprieta.",
+      "Baja lento sin soltar la tensión."
+    ],
+    errors: ["Mover los codos", "Balancearte"]
+  },
+  Cable_Hammer_Curl_Rope: {
+    img: "Cable_Hammer_Curls_-_Rope_Attachment",
+    name: "Curl martillo en polea con cuerda",
+    equip: "Polea baja + cuerda",
+    muscles: "Braquial, antebrazo, bíceps",
+    steps: [
+      "Polea abajo con la cuerda, palmas mirándose.",
+      "Codos pegados al cuerpo.",
+      "Sube la cuerda hasta el pecho y baja lento."
+    ],
+    errors: ["Balancear el cuerpo"]
   },
 
-  Seated_Leg_Curl: {
-    name: "Curl femoral sentado",
-    equip: "Máquina de curl femoral sentado",
-    muscles: "Femorales",
-    steps: [
-      "Rodillas en el eje de la máquina, rodillo abajo de las pantorrillas.",
-      "Baja la almohadilla de los muslos para que no te muevas.",
-      "Dobla las piernas al máximo, aprieta y regresa lento."
-    ],
-    errors: ["Regresar rápido", "Levantar la cadera"]
-  },
-  Hack_Squat: {
-    name: "Sentadilla hack",
-    equip: "Máquina hack",
+  // ---------------- PIERNA (sin barra) ----------------
+  Goblet_Squat: {
+    name: "Sentadilla goblet con mancuerna",
+    equip: "1 mancuerna",
     muscles: "Cuádriceps, glúteos",
     steps: [
-      "Espalda pegada al respaldo, hombros bajo las almohadillas.",
-      "Pies al ancho de hombros en el centro de la plataforma.",
-      "Baja hasta al menos 90° de rodilla, controlado.",
-      "Sube empujando todo el pie."
+      "Agarra una mancuerna vertical pegada al pecho, con las dos manos.",
+      "Pies un poco más abiertos que los hombros, puntas un poco hacia afuera.",
+      "Baja como sentándote, codos entre las rodillas, pecho arriba.",
+      "Sube empujando el piso con todo el pie."
     ],
-    errors: ["Despegar talones", "Rodillas hacia adentro"]
+    errors: ["Rodillas hacia adentro", "Levantar los talones", "Encorvar la espalda"]
   },
-
-  Seated_Calf_Raise: {
-    name: "Pantorrilla sentado",
-    equip: "Máquina de pantorrilla sentado",
-    muscles: "Pantorrillas (sóleo)",
+  Dumbbell_Squat: {
+    name: "Sentadilla con mancuernas",
+    equip: "Mancuernas",
+    muscles: "Cuádriceps, glúteos",
     steps: [
-      "Sentado, almohadilla sobre los muslos, puntas en la orilla.",
-      "Baja los talones al máximo y aguanta 1 seg.",
-      "Sube lo más alto posible y aprieta."
+      "De pie, una mancuerna en cada mano a los lados.",
+      "Pies al ancho de hombros.",
+      "Baja con el pecho arriba hasta que los muslos queden paralelos al piso.",
+      "Sube empujando con todo el pie."
     ],
-    errors: ["Rebotar", "Rango corto"]
+    errors: ["Inclinarte mucho al frente", "Rodillas hacia adentro"]
   },
-  Hanging_Leg_Raise: {
-    name: "Elevación de piernas colgado",
-    equip: "Barra de la jaula",
-    muscles: "Abdomen",
+  Dumbbell_Romanian_Deadlift: {
+    img: "Stiff-Legged_Dumbbell_Deadlift",
+    name: "Peso muerto rumano con mancuernas",
+    equip: "Mancuernas",
+    muscles: "Femorales, glúteos, espalda baja",
     steps: [
-      "Cuelga de la barra con brazos estirados.",
-      "Sube las rodillas (o piernas rectas si puedes) hacia el pecho enrollando la cadera.",
-      "Baja lento sin columpiarte."
+      "De pie con una mancuerna en cada mano frente a los muslos.",
+      "Rodillas un poco dobladas y FIJAS.",
+      "Lleva la cadera hacia atrás y baja las mancuernas pegadas a las piernas, espalda recta.",
+      "Baja hasta sentir el estiramiento atrás del muslo (media espinilla) y sube apretando glúteos."
     ],
-    errors: ["Columpiarse", "Solo subir las piernas sin enrollar la cadera"]
+    errors: ["Redondear la espalda", "Doblar mucho las rodillas", "Alejar las mancuernas de las piernas"]
+  },
+  Calf_Press_Leg_Press: {
+    img: "Calf_Press_On_The_Leg_Press_Machine",
+    name: "Pantorrilla en la prensa",
+    equip: "Prensa de discos",
+    muscles: "Pantorrillas",
+    steps: [
+      "Siéntate en la prensa con las piernas casi rectas (sin bloquear).",
+      "Pon solo las puntas de los pies en la orilla de abajo de la plataforma.",
+      "Empuja con las puntas lo más lejos posible y aprieta 1 seg.",
+      "Regresa lento dejando que los talones bajen bien."
+    ],
+    errors: ["Doblar las rodillas", "Rebotar", "Rango muy corto"],
+    note: "Deja puestos los seguros de la prensa si la máquina lo permite."
   }
-
 };
 
-// Rutina Alpha
+// type: empuje | tiron | pierna | descanso  (define color e icono de cada día)
 const ROUTINES = [
   {
     id: "alpha",
     name: "Alpha",
-    subtitle: "Push · Pull · Legs ×2 — 6 días",
+    subtitle: "Empuje · Tirón · Pierna × 2",
     days: [
       {
-        day: "Lunes", title: "Empuje A", focus: "Pecho, hombros y tríceps · énfasis pecho", time: "75–85 min",
+        day: "Lunes", short: "L", type: "empuje", title: "Empuje A", focus: "Pecho · Hombro · Tríceps", emphasis: "Énfasis en pecho", time: 75,
         list: [
           { id: "Incline_Dumbbell_Press", sets: 4, reps: "8–10", rest: 120 },
           { id: "Dumbbell_Bench_Press", sets: 3, reps: "8–10", rest: 120 },
-          { id: "Incline_Dumbbell_Flyes", sets: 3, reps: "12", rest: 75 },
+          { id: "Cable_Crossover", sets: 3, reps: "12–15", rest: 75 },
           { id: "Seated_Dumbbell_Press", sets: 3, reps: "8–10", rest: 90 },
           { id: "Side_Lateral_Raise", sets: 4, reps: "12–15", rest: 60 },
-          { id: "Lying_Dumbbell_Tricep_Extension", sets: 3, reps: "10–12", rest: 75 },
-          { id: "Standing_Dumbbell_Triceps_Extension", sets: 3, reps: "12", rest: 60 }
+          { id: "Triceps_Pushdown_Rope", sets: 3, reps: "10–12", rest: 60 },
+          { id: "Cable_Rope_Overhead_Triceps_Extension", sets: 3, reps: "12", rest: 60 }
         ]
       },
       {
-        day: "Martes", title: "Tirón A", focus: "Espalda y bíceps · énfasis anchura", time: "75–85 min",
+        day: "Martes", short: "M", type: "tiron", title: "Tirón A", focus: "Espalda · Bíceps", emphasis: "Énfasis en anchura", time: 75,
         list: [
-          { id: "Pullups", sets: 4, reps: "6–10", rest: 120 },
-          { id: "Bent_Over_Barbell_Row", sets: 4, reps: "8–10", rest: 120 },
+          { id: "Wide_Grip_Lat_Pulldown", sets: 4, reps: "8–10", rest: 120 },
+          { id: "Seated_Cable_Rows", sets: 4, reps: "10", rest: 90 },
           { id: "One_Arm_Dumbbell_Row", sets: 3, reps: "10 c/lado", rest: 75 },
-          { id: "Bent_Over_Two_Dumbbell_Row", sets: 3, reps: "10–12", rest: 90 },
-          { id: "Seated_Bent_Over_Rear_Delt_Raise", sets: 3, reps: "15", rest: 60 },
+          { id: "Straight_Arm_Pulldown", sets: 3, reps: "12–15", rest: 60 },
+          { id: "Face_Pull", sets: 3, reps: "15", rest: 60 },
           { id: "Incline_Dumbbell_Curl", sets: 3, reps: "10–12", rest: 75 },
           { id: "Hammer_Curls", sets: 3, reps: "12", rest: 60 }
         ]
       },
       {
-        day: "Miércoles", title: "Pierna A", focus: "Cuádriceps, femoral y pantorrilla", time: "75–85 min",
+        day: "Miércoles", short: "M", type: "pierna", title: "Pierna A", focus: "Cuádriceps · Femoral · Pantorrilla", emphasis: "Énfasis en cuádriceps", time: 70,
         list: [
-          { id: "Barbell_Squat", sets: 4, reps: "6–8", rest: 150 },
           { id: "Leg_Press", sets: 4, reps: "10–12", rest: 120 },
-          { id: "Hack_Squat", sets: 3, reps: "10", rest: 120 },
-          { id: "Leg_Extensions", sets: 3, reps: "12–15", rest: 60 },
-          { id: "Lying_Leg_Curls", sets: 3, reps: "10–12", rest: 75 },
-          { id: "Standing_Calf_Raises", sets: 4, reps: "12–15", rest: 60 }
+          { id: "Goblet_Squat", sets: 3, reps: "10–12", rest: 90 },
+          { id: "Leg_Extensions", sets: 4, reps: "12–15", rest: 75 },
+          { id: "Lying_Leg_Curls", sets: 4, reps: "10–12", rest: 75 },
+          { id: "Dumbbell_Romanian_Deadlift", sets: 3, reps: "10", rest: 90 },
+          { id: "Calf_Press_Leg_Press", sets: 4, reps: "15", rest: 60 }
         ]
       },
       {
-        day: "Jueves", title: "Empuje B", focus: "Pecho, hombros y tríceps · énfasis hombro", time: "75–85 min",
+        day: "Jueves", short: "J", type: "empuje", title: "Empuje B", focus: "Pecho · Hombro · Tríceps", emphasis: "Énfasis en hombro", time: 75,
         list: [
           { id: "Arnold_Dumbbell_Press", sets: 4, reps: "8–10", rest: 120 },
           { id: "Hammer_Grip_Incline_DB_Bench_Press", sets: 4, reps: "8–10", rest: 120 },
-          { id: "Dumbbell_Flyes", sets: 3, reps: "12", rest: 75 },
-          { id: "Seated_Side_Lateral_Raise", sets: 4, reps: "12–15", rest: 60 },
+          { id: "Low_Cable_Crossover", sets: 3, reps: "12–15", rest: 75 },
+          { id: "Standing_Low_Pulley_Deltoid_Raise", sets: 4, reps: "12–15 c/brazo", rest: 45 },
           { id: "Close_Grip_Dumbbell_Press", sets: 3, reps: "10", rest: 90 },
-          { id: "Standing_Dumbbell_Triceps_Extension", sets: 3, reps: "12", rest: 60 }
+          { id: "Triceps_Pushdown_V", sets: 3, reps: "12", rest: 60 }
         ]
       },
       {
-        day: "Viernes", title: "Tirón B", focus: "Espalda y bíceps · énfasis grosor", time: "75–85 min",
+        day: "Viernes", short: "V", type: "tiron", title: "Tirón B", focus: "Espalda · Bíceps", emphasis: "Énfasis en grosor", time: 75,
         list: [
-          { id: "Chin_Up", sets: 4, reps: "6–10", rest: 120 },
+          { id: "V_Bar_Pulldown", sets: 4, reps: "8–10", rest: 120 },
           { id: "Dumbbell_Incline_Row", sets: 4, reps: "10", rest: 90 },
-          { id: "One_Arm_Dumbbell_Row", sets: 3, reps: "8 c/lado (pesado)", rest: 90 },
-          { id: "Seated_Bent_Over_Rear_Delt_Raise", sets: 3, reps: "15", rest: 60 },
+          { id: "Seated_One_Arm_Cable_Row", sets: 3, reps: "10 c/lado", rest: 60 },
+          { id: "Cable_Rear_Delt_Fly", sets: 3, reps: "15", rest: 60 },
           { id: "Dumbbell_Shrug", sets: 3, reps: "12–15", rest: 60 },
-          { id: "Barbell_Curl", sets: 3, reps: "8–10", rest: 75 },
-          { id: "Dumbbell_Alternate_Bicep_Curl", sets: 3, reps: "10 c/brazo", rest: 60 }
+          { id: "Standing_Biceps_Cable_Curl", sets: 3, reps: "10–12", rest: 60 },
+          { id: "Cable_Hammer_Curl_Rope", sets: 3, reps: "12", rest: 60 }
         ]
       },
       {
-        day: "Sábado", title: "Pierna B", focus: "Cadena posterior (femoral y glúteo) + cuádriceps", time: "75–85 min",
+        day: "Sábado", short: "S", type: "pierna", title: "Pierna B", focus: "Femoral · Glúteo · Cuádriceps", emphasis: "Énfasis en cadena posterior", time: 70,
         list: [
-          { id: "Romanian_Deadlift", sets: 4, reps: "8–10", rest: 150 },
+          { id: "Dumbbell_Romanian_Deadlift", sets: 4, reps: "8–10", rest: 120 },
+          { id: "Lying_Leg_Curls", sets: 4, reps: "10–12", rest: 75 },
           { id: "Leg_Press", sets: 4, reps: "10–12 (pies altos)", rest: 120 },
-          { id: "Seated_Leg_Curl", sets: 4, reps: "10–12", rest: 75 },
-          { id: "Hack_Squat", sets: 3, reps: "10", rest: 120 },
-          { id: "Leg_Extensions", sets: 3, reps: "12–15", rest: 60 },
-          { id: "Seated_Calf_Raise", sets: 4, reps: "15", rest: 60 },
-          { id: "Hanging_Leg_Raise", sets: 3, reps: "12", rest: 60 }
+          { id: "Dumbbell_Squat", sets: 3, reps: "12", rest: 90 },
+          { id: "Leg_Extensions", sets: 3, reps: "15", rest: 60 },
+          { id: "Calf_Press_Leg_Press", sets: 4, reps: "15", rest: 60 }
         ]
       },
-      { day: "Domingo", title: "Descanso total", focus: "Come bien, duerme 7–9 h e hidrátate", rest: true, list: [] }
+      { day: "Domingo", short: "D", type: "descanso", title: "Descanso", focus: "Recupera para la próxima semana", emphasis: "Descanso total", list: [] }
     ]
   }
 ];

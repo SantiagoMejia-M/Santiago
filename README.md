@@ -1,6 +1,6 @@
 # CasaPistache
 ## Mi Gym — Rutina Alpha (`gym/`)
-App web instalable en el celular (PWA, funciona sin internet). Ábrela desde
+App web instalable en el celular (PWA, funciona sin internet). Rutina sin barras: mancuernas, bancos, poleas y máquinas de pierna de discos. Ábrela desde
 `https://<tu-usuario>.github.io/CasaPistache/gym/` y en Chrome elige
 "Agregar a pantalla principal" / "Instalar app".
 
