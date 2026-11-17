@@ -2,7 +2,7 @@
 
 Duración: 2:30 · Formato vertical 9:16 · Grabación con celular (1 o 2 personas)
 
-> Graba en vertical, 1080p a 30 fps, con el lente limpio y luz natural cuando se pueda. Movimientos lentos y con las dos manos; si hay presentador, una persona graba y otra habla.
+> Mitad del video lleva voz (escenas 1, 3, 5, 8, 9, 11 y 14) y la otra mitad va solo con música de fondo y texto en pantalla (escenas 2, 4, 6, 7, 10, 12 y 13). Graba en vertical, 1080p a 30 fps, con el lente limpio y luz natural cuando se pueda. Movimientos lentos y con las dos manos; si hay presentador, una persona graba y otra habla.
 
 ## Escena 1 · 0:00–0:12 · Fachada y entrada
 
@@ -13,8 +13,8 @@ Duración: 2:30 · Formato vertical 9:16 · Grabación con celular (1 o 2 person
 ## Escena 2 · 0:12–0:21 · Recepción
 
 - **Toma:** Desde la puerta, plano medio de la persona de recepción saludando a cámara. Avanza dos pasos hacia el mostrador.
-- **Voz / presentador:** “Al entrar te recibe nuestro equipo de recepción, que te orienta y te lleva con la persona indicada.”
-- **Texto en pantalla:** Recepción
+- **Voz / presentador:** Sin narración, solo música de fondo.
+- **Texto en pantalla:** Recepción · Te recibimos y te orientamos
 
 ## Escena 3 · 0:21–0:35 · Piso de exhibición
 
@@ -25,8 +25,8 @@ Duración: 2:30 · Formato vertical 9:16 · Grabación con celular (1 o 2 person
 ## Escena 4 · 0:35–0:45 · Asesores de ventas
 
 - **Toma:** Plano medio de un asesor junto a un auto o en su escritorio, hablando a cámara. Cámara fija a la altura de los ojos, a 1.5 m.
-- **Voz / presentador:** “Nuestros asesores de ventas te explican cada modelo, resuelven tus dudas y te ayudan a elegir el auto ideal para ti.”
-- **Texto en pantalla:** Asesores de ventas
+- **Voz / presentador:** Sin narración, solo música de fondo.
+- **Texto en pantalla:** Asesores de ventas · Te ayudamos a elegir tu auto ideal
 
 ## Escena 5 · 0:45–0:56 · Financiamiento y crédito
 
@@ -37,14 +37,14 @@ Duración: 2:30 · Formato vertical 9:16 · Grabación con celular (1 o 2 person
 ## Escena 6 · 0:56–1:06 · Entrega de unidades
 
 - **Toma:** Plano general del auto listo para entrega. Acércate despacio hasta un detalle de la llave o del moño.
-- **Voz / presentador:** “Aquí entregamos tu auto nuevo. Te explicamos cómo funciona y te lo llevas listo para el camino.”
-- **Texto en pantalla:** Entrega de unidades
+- **Voz / presentador:** Sin narración, solo música de fondo.
+- **Texto en pantalla:** Entrega de unidades · Tu auto nuevo, listo para el camino
 
 ## Escena 7 · 1:06–1:16 · Seminuevos
 
 - **Toma:** Párate en un extremo de la fila de seminuevos y haz un paneo lento a lo largo de los autos.
-- **Voz / presentador:** “En seminuevos encuentras autos revisados y con buen precio. También puedes dejar tu auto actual a cuenta.”
-- **Texto en pantalla:** Seminuevos
+- **Voz / presentador:** Sin narración, solo música de fondo.
+- **Texto en pantalla:** Seminuevos · Autos revisados y toma de tu auto a cuenta
 
 ## Escena 8 · 1:16–1:27 · Recepción de servicio
 
@@ -61,8 +61,8 @@ Duración: 2:30 · Formato vertical 9:16 · Grabación con celular (1 o 2 person
 ## Escena 10 · 1:41–1:50 · Refacciones
 
 - **Toma:** Plano medio del mostrador de refacciones y paneo lento por los anaqueles.
-- **Voz / presentador:** “En refacciones encuentras piezas y accesorios originales para tu vehículo.”
-- **Texto en pantalla:** Refacciones
+- **Voz / presentador:** Sin narración, solo música de fondo.
+- **Texto en pantalla:** Refacciones · Piezas y accesorios originales
 
 ## Escena 11 · 1:50–2:00 · Hojalatería y pintura
 
@@ -73,14 +73,14 @@ Duración: 2:30 · Formato vertical 9:16 · Grabación con celular (1 o 2 person
 ## Escena 12 · 2:00–2:07 · Lavado
 
 - **Toma:** Detalle cercano de agua o espuma sobre la carrocería. Cámara fija.
-- **Voz / presentador:** “Y antes de entregártelo, lo lavamos para que salga impecable.”
-- **Texto en pantalla:** Lavado
+- **Voz / presentador:** Sin narración, solo música de fondo.
+- **Texto en pantalla:** Lavado · Te lo entregamos impecable
 
 ## Escena 13 · 2:07–2:17 · Sala de espera
 
 - **Toma:** Paneo lento de la sala: sillones, café, pantalla. Graba con la sala ordenada y sin clientes a cuadro (o con su permiso).
-- **Voz / presentador:** “Mientras esperas, ponte cómodo en nuestra sala, con café, internet y un espacio tranquilo.”
-- **Texto en pantalla:** Sala de espera
+- **Voz / presentador:** Sin narración, solo música de fondo.
+- **Texto en pantalla:** Sala de espera · Café, internet y comodidad mientras esperas
 
 ## Escena 14 · 2:17–2:30 · Cierre
 
